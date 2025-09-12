@@ -4515,7 +4515,7 @@
                     if (alert.trigger_value < thresholds.warnLow) {
                         return 'Low';
                     }
-                    return 'Threshold Event';
+                    return 'Critical';
                 };
                 listEl.innerHTML = '';
                 if (!alerts || alerts.length === 0) {
@@ -5228,8 +5228,14 @@
                     const res = await fetch('/api/notification-settings', { cache: 'no-store' });
                     if (!res.ok) throw new Error('Failed to fetch settings');
                     const data = await res.json();
-                    notificationEmails = data.recipients?.email || [];
-                    telegramChatIds = data.recipients?.telegram || [];
+                    notificationEmails.length = 0;
+                    if (data.recipients?.email) {
+                        notificationEmails.push(...data.recipients.email);
+                    }
+                    telegramChatIds.length = 0;
+                    if (data.recipients?.telegram) {
+                        telegramChatIds.push(...data.recipients.telegram);
+                    }
                     const schedule = data.schedule;
                     if (schedule && schedule.weekdays?.length === 7 && Array.isArray(schedule.configs) && schedule.configs.length > 0) {
                         scheduleWeekdays = schedule.weekdays;
@@ -5240,8 +5246,8 @@
                     }
                 } catch (err) {
                     console.warn('[Notifications] Could not load settings, using defaults:', err);
-                    notificationEmails = [];
-                    telegramChatIds = [];
+                    notificationEmails.length = 0;
+                    telegramChatIds.length = 0;
                     scheduleWeekdays = [true, true, true, true, true, true, true];
                     scheduleConfigs = [{ sendAt: "08:00", rangeStart: "17:00", rangeEnd: "08:00" }];
                 }
