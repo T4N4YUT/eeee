@@ -501,7 +501,6 @@
         "id": "6705ace90aa6e3cd",
         "type": "e-mail",
         "z": "6d5ddc6b8286095b",
-        "d": true,
         "server": "smtp.gmail.com",
         "port": "465",
         "authtype": "BASIC",
@@ -897,7 +896,7 @@
         "bot": "ac1b0163af36f2a7",
         "haserroroutput": false,
         "outputs": 1,
-        "x": 3730,
+        "x": 3390,
         "y": 400,
         "wires": [
             []
@@ -1055,7 +1054,6 @@
         "id": "77597513641dbe6d",
         "type": "e-mail",
         "z": "c1a8b9f7.1d2e3f",
-        "d": true,
         "server": "smtp.gmail.com",
         "port": "465",
         "authtype": "BASIC",
@@ -1149,24 +1147,6 @@
             [
                 "ae08361dd8b635c3"
             ]
-        ]
-    },
-    {
-        "id": "262f0292435d636f",
-        "type": "function",
-        "z": "c1a8b9f7.1d2e3f",
-        "name": "Prepare Telegram Markdown",
-        "func": "// === Prepare Telegram Markdown v2.8 (HTML <pre> box for range) ===\n// NOTE: ใช้ parse_mode: 'HTML' เพื่อให้ <pre> แสดงเป็นกล่องพื้นหลัง\n\nconst settings = msg.settings || {};\nconst alert = msg.alert || msg.payload || {};\n\n// --- 1) Recipients ---\nconst telegramRecipients = settings.recipients?.telegram;\nif (!telegramRecipients || telegramRecipients.length === 0) {\n    node.status({ fill: \"yellow\", shape: \"ring\", text: \"No Telegram recipients\" });\n    return null;\n}\nconst chatIds = Array.isArray(telegramRecipients) ? telegramRecipients : [telegramRecipients];\n\n// --- 2) Helpers ---\nconst pick = (o, ...k) => { for (const x of k) if (o && o[x] !== undefined && o[x] !== null && o[x] !== '') return o[x]; return null; };\nconst toNum = v => { if (v === null || v === undefined) return null; const m = String(v).match(/-?\\d+(\\.\\d+)?/); return m ? Number(m[0]) : null; };\nfunction metricInfo(metric) {\n    const k = String(metric || '').toLowerCase();\n    if (k.startsWith('temp')) return { th: 'อุณหภูมิ', unit: '°C', digits: 1 };\n    if (k.startsWith('hum'))  return { th: 'ความชื้น', unit: '%', digits: 1 };\n    return { th: 'ค่า', unit: '', digits: 2 };\n}\nfunction esc(s) {\n    // สำหรับ HTML parse_mode ต้อง escape พื้นฐาน\n    return String(s ?? '')\n        .replace(/&/g, '&amp;')\n        .replace(/</g, '&lt;')\n        .replace(/>/g, '&gt;');\n}\n\n// --- 3) Extract core fields ---\nconst room = pick(alert, 'room_name', 'room') || 'N/A';\nconst pos  = pick(alert, 'sensor_name', 'sensor') || 'N/A';\nconst mac  = String(pick(alert, 'mac', 'device_mac') || '').toUpperCase();\nconst metricKey = String(pick(alert, 'metric', 'type') || '').toLowerCase();\nconst mi = metricInfo(metricKey);\n\nconst typeOrState = String(pick(alert, 'event', 'type', 'state') || '').toLowerCase();\nconst isRecovery = ['recovery', 'normal', 'resolve', 'resolved', 'close', 'closed'].includes(typeOrState);\n\nlet valNum = isRecovery\n    ? toNum(pick(alert, 'value', 'recovery_value', 'current_value'))\n    : toNum(pick(alert, 'value', 'trigger_value', 'current_value'));\n\nlet warnMin = toNum(pick(alert, 'warn_min'));\nlet warnMax = toNum(pick(alert, 'warn_max'));\nlet critMin = toNum(pick(alert, 'crit_min'));\nlet critMax = toNum(pick(alert, 'crit_max'));\n\n// optional rule fallback\nif ([warnMin, warnMax].some(v => v === null) && !metricKey.includes('connect')) {\n    const rules = global.get('effectiveRuleMap') || {};\n    const rule = rules[`${mac}|${pos}|${metricKey}`] || rules[`${mac}|overall|${metricKey}`];\n    if (rule) {\n        if (warnMin === null) warnMin = toNum(rule.warn_min);\n        if (warnMax === null) warnMax = toNum(rule.warn_max);\n        if (critMin === null) critMin = toNum(rule.crit_min);\n        if (critMax === null) critMax = toNum(rule.crit_max);\n    }\n}\n\nlet level = String(pick(alert, 'level', 'severity') || 'info').toLowerCase();\nif (isRecovery) level = 'recovery';\n\n// --- 4) Compose message (HTML) ---\nconst icons = { critical: '🔴', warning: '🟡', recovery: '🟢' };\nconst titles = {\n    critical: 'แจ้งเตือนสถานะวิกฤต',\n    warning:  'แจ้งเตือนสถานะเฝ้าระวัง',\n    recovery: 'แจ้งเตือนสถานะกลับมาเป็นปกติ'\n};\n\nconst lines = [];\nlines.push(`${icons[level] || '⚪️'} ${titles[level] || 'แจ้งเพื่อทราบ'}`);\n\nconst locationIdentifier = `${esc(room)} - ${esc(pos)}`;\n\nif (metricKey.includes('connect')) {\n    const statusPhrase = (valNum === 0 || valNum === null) ? 'ออฟไลน์' : 'กลับมาออนไลน์';\n    lines.push(`📍 สถานที่: ${locationIdentifier} ${esc(statusPhrase)}`);\n} else {\n    let statusWord = '';\n    if (isRecovery) {\n        statusWord = 'กลับมาเป็นปกติ';\n    } else {\n        if (critMax !== null && valNum > critMax) statusWord = 'สูงมาก';\n        else if (critMin !== null && valNum < critMin) statusWord = 'ต่ำมาก';\n        else if (warnMax !== null && valNum > warnMax) statusWord = 'สูงผิดปกติ';\n        else if (warnMin !== null && valNum < warnMin) statusWord = 'ต่ำผิดปกติ';\n    }\n    const valTxt = valNum !== null ? `(${valNum.toFixed(mi.digits)}${mi.unit})` : '';\n    lines.push(`📍 สถานที่: ${locationIdentifier} ${esc(mi.th + statusWord + valTxt)}`);\n\n    // แสดง \"ช่วงที่เหมาะสม\" เป็นกล่องพื้นหลังด้วย <pre> ... </pre>\n    if (warnMin !== null && warnMax !== null) {\n        const rangeTxt = `${warnMin.toFixed(mi.digits)}${mi.unit} - ${warnMax.toFixed(mi.digits)}${mi.unit}`;\n        // ใช้ <pre> เพื่อให้ Telegram แสดงพื้นหลังเทา\n        lines.push(`<pre>📊 ช่วงที่เหมาะสม : ${esc(rangeTxt)}</pre>`);\n    }\n}\n\nconst content = lines.join('\\n');\n\n// --- 5) Build outputs for Telegram sender ---\nconst messages = chatIds.map(chId => ({\n    payload: {\n        chatId: chId,\n        type: 'message',\n        content: content,\n        options: { parse_mode: 'HTML', disable_web_page_preview: true }\n    }\n}));\n\nnode.status({ fill: \"blue\", shape: \"dot\", text: `HTML <pre> box to ${chatIds.length} users` });\nreturn [messages];\n",
-        "outputs": 1,
-        "timeout": 0,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 1520,
-        "y": 380,
-        "wires": [
-            []
         ]
     },
     {
@@ -1686,6 +1666,60 @@
         "x": 1654,
         "y": 1239,
         "w": 942,
+        "h": 222
+    },
+    {
+        "id": "group-auto-ping",
+        "type": "group",
+        "z": "640c6734fdac3595",
+        "name": "Auto Ping from MQTT",
+        "style": {
+            "stroke": "#ff0000",
+            "fill": "#ffbfbf",
+            "label": true
+        },
+        "nodes": [
+            "mqtt-in-status",
+            "fn-prepare-ping",
+            "node-ping-dyn",
+            "fn-check-status",
+            "switch-status",
+            "fn-insert-db",
+            "mysql-log",
+            "5493a59f3acfe831",
+            "b63ac93263c6f1f1",
+            "3a69979a7faa54f4",
+            "76aa5db57dc4f5e5",
+            "3372a01a10b1d515",
+            "fad0c5a6b7a21425"
+        ],
+        "x": 294,
+        "y": 1719,
+        "w": 952,
+        "h": 282
+    },
+    {
+        "id": "676847ac6c4f36b7",
+        "type": "group",
+        "z": "640c6734fdac3595",
+        "name": "",
+        "style": {
+            "stroke": "#ff0000",
+            "fill": "#ffbfbf",
+            "label": true
+        },
+        "nodes": [
+            "57fa4e2f9da05f8c",
+            "e99f87a558bc82ac",
+            "14a385ddcc208434",
+            "a7420d5d77b7a55b",
+            "ae84c1c943c177d4",
+            "31e31f348061fa46",
+            "7b793492b9a90f43"
+        ],
+        "x": 1252.0078125,
+        "y": 1862.5078125,
+        "w": 702,
         "h": 222
     },
     {
@@ -4286,6 +4320,7 @@
         "id": "77971b6e431ea86d",
         "type": "ping",
         "z": "640c6734fdac3595",
+        "d": true,
         "g": "3c7c28232df10c32",
         "protocol": "Automatic",
         "mode": "timed",
@@ -4305,6 +4340,7 @@
         "id": "937c8093b89d17f4",
         "type": "function",
         "z": "640c6734fdac3595",
+        "d": true,
         "g": "3c7c28232df10c32",
         "name": "Insert to DB",
         "func": "function toLocalSqlDate(d) {\n  d = d || new Date();\n  const local = new Date(d.getTime() - d.getTimezoneOffset() * 60000);\n  return local.toISOString().slice(0,19).replace('T',' ');\n}\nlet data = msg.payload;\nlet time = data.event_time\n  ? toLocalSqlDate(new Date(data.event_time))\n  : toLocalSqlDate();\n\nmsg.topic = `\n  INSERT INTO esp_status_log\n    (mac, room, status, time)\n  VALUES\n    (\n      '${data.mac}',\n      '${data.room.replace(/'/g,\"''\")}',\n      '${data.status}',\n      '${time}'\n    );\n`.replace(/\\s+/g,' ');\n\nreturn msg;",
@@ -4326,6 +4362,7 @@
         "id": "4dca5a796b2469fc",
         "type": "mysql",
         "z": "640c6734fdac3595",
+        "d": true,
         "g": "3c7c28232df10c32",
         "mydb": "5e560f07cfec117a",
         "name": "esp_status_log",
@@ -4339,6 +4376,7 @@
         "id": "9bdb51bc33082cea",
         "type": "mqtt in",
         "z": "640c6734fdac3595",
+        "d": true,
         "g": "3c7c28232df10c32",
         "name": "Check MQTT",
         "topic": "esp32/status",
@@ -4349,7 +4387,7 @@
         "rap": true,
         "rh": 0,
         "inputs": 0,
-        "x": 170,
+        "x": 190,
         "y": 560,
         "wires": [
             [
@@ -4361,6 +4399,7 @@
         "id": "22aacd3219d0cc15",
         "type": "comment",
         "z": "640c6734fdac3595",
+        "d": true,
         "g": "3c7c28232df10c32",
         "name": "เช็ค Status ส่งไปหน้าเว็บและจัดเก็บใน DB",
         "info": "",
@@ -4372,6 +4411,7 @@
         "id": "752553bd54961a67",
         "type": "function",
         "z": "640c6734fdac3595",
+        "d": true,
         "g": "3c7c28232df10c32",
         "name": "Check Status",
         "func": "// --- ส่วนตั้งค่าอุปกรณ์ ---\nconst deviceConfig = {\n    '94:B9:7E:CE:01:EF': { ip: '192.168.42.30', room: 'Server Room 1' }\n};\n\n// --- ตั้งค่าการหน่วงเวลา ---\nconst OFFLINE_GRACE_PERIOD_MS = 60000;\nconst MQTT_TIMEOUT_MS = 21000;\n\n// --- ตัวแปร Global ---\nlet states = flow.get('deviceStates') || {};\nconst ipToMacMap = {};\nfor (const mac in deviceConfig) {\n    ipToMacMap[deviceConfig[mac].ip] = mac;\n}\n\n// --- ฟังก์ชันช่วยเหลือ ---\nfunction now() { return Date.now(); }\nfunction normalizeMac(s) {\n    if (!s) return null;\n    s = String(s).toUpperCase().replace(/[^0-9A-F]/g, '');\n    if (s.length !== 12) return null;\n    return s.match(/.{2}/g).join(':');\n}\n\n// --- Logic หลัก ---\nlet mac = null;\nlet sourceType = null;\n\nif (msg.topic && ipToMacMap[msg.topic]) {\n    sourceType = \"Ping\";\n    mac = ipToMacMap[msg.topic];\n} else if (msg.topic && msg.topic.startsWith('esp32/')) {\n    sourceType = \"MQTT\";\n    mac = normalizeMac(msg.payload && msg.payload.mac) || normalizeMac(msg.topic.split('/')[1]);\n}\n\nif (!mac || !deviceConfig[mac]) {\n    return null;\n}\n\nif (!states[mac]) {\n    states[mac] = {\n        pingOk: false, mqttOk: false, lastCombinedState: 'offline',\n        ping_ms: null, lastMqttTs: 0, offlineSince: null\n    };\n}\n\nconst oldState = states[mac].lastCombinedState;\nconst deviceState = states[mac];\n\nif (sourceType === \"MQTT\") {\n    deviceState.mqttOk = (msg.payload && msg.payload.status || '').toString().toLowerCase() === 'online';\n    deviceState.lastMqttTs = now();\n} else { // sourceType === \"Ping\"\n    deviceState.pingOk = (msg.payload !== false);\n    deviceState.ping_ms = (msg.payload !== false) ? Number(msg.payload) : deviceState.ping_ms;\n}\n\nif ((now() - deviceState.lastMqttTs) > MQTT_TIMEOUT_MS) {\n    deviceState.mqttOk = false;\n}\n\nconst potentialState = (deviceState.pingOk && deviceState.mqttOk) ? 'online' : 'offline';\nlet statusMsg = null;\nlet configRequestMsg = null; // ✨ Message สำหรับขอ Config\n\nif (potentialState === 'online') {\n    deviceState.offlineSince = null;\n    if (oldState === 'offline') {\n        deviceState.lastCombinedState = 'online';\n        statusMsg = { // Message สำหรับ Output 1\n            payload: {\n                mac: mac, room: deviceConfig[mac].room, status: 'online',\n                ping_ms: deviceState.ping_ms, event_time: new Date().toISOString(), pin: \"OVERALL\"\n            }\n        };\n        // ✨ เมื่อกลับมา Online ให้สร้าง message เพื่อไปขอ Config ด้วย\n        configRequestMsg = { // Message สำหรับ Output 2\n            payload: {\n                command: \"get_config\",\n                mac: mac,\n                // ใส่ requestId เพื่อให้ติดตามได้ง่าย (optional)\n                requestId: `auto-get-${Date.now()}`\n            }\n        };\n    }\n} else { // potentialState === 'offline'\n    if (oldState === 'online') {\n        if (deviceState.offlineSince === null) {\n            deviceState.offlineSince = now();\n        }\n    }\n    if (deviceState.offlineSince && (now() - deviceState.offlineSince > OFFLINE_GRACE_PERIOD_MS) && oldState === 'online') {\n        deviceState.lastCombinedState = 'offline';\n        statusMsg = {\n            payload: {\n                mac: mac, room: deviceConfig[mac].room, status: 'offline',\n                ping_ms: deviceState.ping_ms, event_time: new Date().toISOString(), pin: \"OVERALL\"\n            }\n        };\n    }\n}\n\nflow.set('deviceStates', states);\n\n// ✨ ส่ง message ออก 2 ขา: [output1, output2]\nreturn [statusMsg, configRequestMsg];",
@@ -4398,6 +4438,7 @@
         "id": "f6bf0c6b76b28ba8",
         "type": "switch",
         "z": "640c6734fdac3595",
+        "d": true,
         "g": "3c7c28232df10c32",
         "name": "Status Switch",
         "property": "payload.status",
@@ -4660,6 +4701,428 @@
         "name": "",
         "x": 2430,
         "y": 1420,
+        "wires": []
+    },
+    {
+        "id": "mqtt-in-status",
+        "type": "mqtt in",
+        "z": "640c6734fdac3595",
+        "g": "group-auto-ping",
+        "name": "MQTT Status",
+        "topic": "esp32/status",
+        "qos": "2",
+        "datatype": "json",
+        "broker": "8301192ec347dbc9",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 410,
+        "y": 1840,
+        "wires": [
+            [
+                "fn-prepare-ping",
+                "5493a59f3acfe831",
+                "fn-check-status"
+            ]
+        ]
+    },
+    {
+        "id": "fn-prepare-ping",
+        "type": "function",
+        "z": "640c6734fdac3595",
+        "g": "group-auto-ping",
+        "name": "Prepare Ping",
+        "func": "// Prepare Ping (v4): บังคับให้มี payload=IP สำหรับ trigger-ping\n// และ \"จดจำ\" mapping IP→MAC + meta ไว้ใน flow context\n\nlet p = {};\ntry {\n  if (typeof msg.payload === 'string' && msg.payload.trim().startsWith('{')) p = JSON.parse(msg.payload);\n  else if (typeof msg.payload === 'object' && msg.payload !== null) p = msg.payload;\n} catch (e) { p = {}; }\n\nconst ip = p.ip || msg.ip;\nconst mac = (p.mac || msg.mac || '').toUpperCase();\nconst room = p.room || msg.room || 'Unknown Room';\nconst status = p.status || msg.status || null;\n\nif (!ip || !mac) {\n  node.status({ fill:\"red\", shape:\"dot\", text: !ip ? \"no ip\" : \"no mac\" });\n  return null;\n}\n\n// +++ เพิ่มบรรทัดนี้ +++\nmsg.originalPayload = p; // เก็บข้อมูล MQTT เดิมไว้\n\n// 1) ใส่เป้าพิงบน msg.payload (requirement ของ ping[trigger])\nmsg.payload = ip;\n\n// 2) เผื่อใช้ในภายหลัง\nmsg.host = ip;\nmsg.mac = mac;\nmsg.room = room;\nmsg.status = status;\n\n// 3) เก็บ mapping ลง flow context เผื่อ ping ทำของเราหล่น\nlet ip2mac = flow.get('ip2mac') || {};\nip2mac[ip] = mac;\nflow.set('ip2mac', ip2mac);\n\nlet macMeta = flow.get('macMeta') || {};\nmacMeta[mac] = { room, ip };\nflow.set('macMeta', macMeta);\n\nnode.status({ fill:\"green\", shape:\"dot\", text:`target ${ip}` });\nreturn msg;",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 600,
+        "y": 1840,
+        "wires": [
+            [
+                "node-ping-dyn",
+                "76aa5db57dc4f5e5"
+            ]
+        ]
+    },
+    {
+        "id": "node-ping-dyn",
+        "type": "ping",
+        "z": "640c6734fdac3595",
+        "g": "group-auto-ping",
+        "protocol": "Automatic",
+        "mode": "triggered",
+        "name": "Ping dynamic IP",
+        "host": "",
+        "timer": "10",
+        "inputs": 1,
+        "x": 810,
+        "y": 1840,
+        "wires": [
+            [
+                "fn-check-status",
+                "3a69979a7faa54f4"
+            ]
+        ]
+    },
+    {
+        "id": "fn-check-status",
+        "type": "function",
+        "z": "640c6734fdac3595",
+        "g": "group-auto-ping",
+        "name": "Check Status",
+        "func": "// --- ตั้งค่าการหน่วงเวลา ---\nconst OFFLINE_GRACE_PERIOD_MS = 60000;\nconst MQTT_TIMEOUT_MS = 21000;\n\n// --- ตัวแปร Global ---\nlet states  = flow.get('deviceStates') || {};\nconst ip2mac = flow.get('ip2mac') || {};\nconst macMeta= flow.get('macMeta') || {};\n\n// --- ฟังก์ชันช่วยเหลือ ---\nfunction now() { return Date.now(); }\nfunction normalizeMac(s) {\n  if (!s) return null;\n  s = String(s).toUpperCase().replace(/[^0-9A-F]/g, '');\n  if (s.length !== 12) return null;\n  return s.match(/.{2}/g).join(':');\n}\n\n// --- Logic หลัก ---\nlet mac = null;\nlet sourceType = null;\n\n// MQTT case\nif (msg.topic && msg.topic.startsWith('esp32/')) {\n  sourceType = \"MQTT\";\n  mac = normalizeMac(msg.payload && msg.payload.mac) || normalizeMac(msg.topic.split('/')[1]);\n\n  // อัปเดต mapping กันของหายไว้ซ้ำอีกชั้น\n  const ip   = msg.payload && msg.payload.ip;\n  const room = (msg.payload && msg.payload.room) || (macMeta[mac]?.room) || \"Unknown Room\";\n  if (ip && mac) {\n    ip2mac[ip] = mac;\n    flow.set('ip2mac', ip2mac);\n  }\n  macMeta[mac] = { room, ip: ip || macMeta[mac]?.ip || null };\n  flow.set('macMeta', macMeta);\n\n// Ping case (หลังผ่าน ping node)\n// ping เปลี่ยน topic เป็น IP และมักจะทิ้ง msg.mac ทิ้ง\n} else {\n  sourceType = \"Ping\";\n  const ip = msg.host || (typeof msg.topic === 'string' ? msg.topic : null);\n  mac = ip ? ip2mac[ip] : normalizeMac(msg.mac);  // เอา MAC กลับมาจาก mapping\n}\n\nif (!mac) return null;\n\nif (!states[mac]) {\n  states[mac] = {\n    pingOk: false, mqttOk: false, lastCombinedState: 'offline',\n    ping_ms: null, lastMqttTs: 0, offlineSince: null\n  };\n}\n\nconst deviceState = states[mac];\nconst oldState    = deviceState.lastCombinedState;\n\n// --- อัปเดตสถานะ ---\nif (sourceType === \"MQTT\") {\n  deviceState.mqttOk = (msg.payload && msg.payload.status || '').toString().toLowerCase() === 'online';\n  deviceState.lastMqttTs = now();\n  // meta\n  deviceState.room = (msg.payload && msg.payload.room) || deviceState.room || macMeta[mac]?.room || \"Unknown Room\";\n  deviceState.ip   = (msg.payload && msg.payload.ip)   || deviceState.ip   || macMeta[mac]?.ip   || null;\n\n} else { // Ping\n  deviceState.pingOk = (msg.payload !== false);\n  deviceState.ping_ms = (msg.payload !== false) ? Number(msg.payload) : deviceState.ping_ms;\n  // ip จาก host/topic\n  const ip = msg.host || (typeof msg.topic === 'string' ? msg.topic : null);\n  if (ip) deviceState.ip = ip;\n  // เติม room จาก meta ถ้ายังไม่มี\n  if (!deviceState.room) deviceState.room = macMeta[mac]?.room || \"Unknown Room\";\n}\n\n// --- เช็ค timeout ของ MQTT ---\nif ((now() - deviceState.lastMqttTs) > MQTT_TIMEOUT_MS) {\n  deviceState.mqttOk = false;\n}\n\n// --- คำนวณสถานะรวม ---\nconst potentialState = (deviceState.pingOk && deviceState.mqttOk) ? 'online' : 'offline';\nlet statusMsg = null;\nlet configRequestMsg = null;\n\nif (potentialState === 'online') {\n  deviceState.offlineSince = null;\n  if (oldState === 'offline') {\n    deviceState.lastCombinedState = 'online';\n    statusMsg = {\n      payload: {\n        mac: mac,\n        room: deviceState.room,\n        ip: deviceState.ip,\n        status: 'online',\n        ping_ms: deviceState.ping_ms,\n        event_time: new Date().toISOString(),\n        pin: \"OVERALL\"\n      }\n    };\n    configRequestMsg = {\n      payload: { command: \"get_config\", mac: mac, requestId: `auto-get-${Date.now()}` }\n    };\n  }\n} else { // offline path\n  if (oldState === 'online' && deviceState.offlineSince === null) {\n    deviceState.offlineSince = now();\n  }\n  if (deviceState.offlineSince &&\n      (now() - deviceState.offlineSince > OFFLINE_GRACE_PERIOD_MS) &&\n      oldState === 'online') {\n    deviceState.lastCombinedState = 'offline';\n    statusMsg = {\n      payload: {\n        mac: mac,\n        room: deviceState.room,\n        ip: deviceState.ip,\n        status: 'offline',\n        ping_ms: deviceState.ping_ms,\n        event_time: new Date().toISOString(),\n        pin: \"OVERALL\"\n      }\n    };\n  }\n}\n\nflow.set('deviceStates', states);\nreturn [statusMsg, configRequestMsg];\n",
+        "outputs": 2,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 390,
+        "y": 1920,
+        "wires": [
+            [
+                "switch-status",
+                "9708f9c81584ae9a",
+                "6889d15e433846c7",
+                "fad0c5a6b7a21425"
+            ],
+            [
+                "84de7bd1374c55ed",
+                "fad0c5a6b7a21425"
+            ]
+        ]
+    },
+    {
+        "id": "switch-status",
+        "type": "switch",
+        "z": "640c6734fdac3595",
+        "g": "group-auto-ping",
+        "name": "Status Switch",
+        "property": "payload.status",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "online",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "offline",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 600,
+        "y": 1920,
+        "wires": [
+            [
+                "fn-insert-db",
+                "3372a01a10b1d515"
+            ],
+            [
+                "fn-insert-db",
+                "3372a01a10b1d515"
+            ]
+        ]
+    },
+    {
+        "id": "fn-insert-db",
+        "type": "function",
+        "z": "640c6734fdac3595",
+        "g": "group-auto-ping",
+        "name": "Insert to DB",
+        "func": "function toLocalSqlDate(d) {\n  d = d || new Date();\n  const local = new Date(d.getTime() - d.getTimezoneOffset() * 60000);\n  return local.toISOString().slice(0,19).replace('T',' ');\n}\n\nconst d = msg.payload || {};\nconst time = d.event_time ? toLocalSqlDate(new Date(d.event_time)) : toLocalSqlDate();\n\n// safety เล็กน้อย\nconst mac    = (d.mac || '').toUpperCase();\nconst room   = (d.room || 'Server Room 1').replace(/'/g, \"''\");  // กัน quote แตก\nconst status = (d.status || '').toLowerCase();                    // online/offline เท่านั้น\n\nmsg.topic = `\n  INSERT INTO esp_status_log\n    (mac, room, status, time)\n  VALUES\n    ('${mac}', '${room}', '${status}', '${time}');\n`.replace(/\\s+/g, ' ');\n\nreturn msg;\n",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 810,
+        "y": 1920,
+        "wires": [
+            [
+                "mysql-log",
+                "b63ac93263c6f1f1"
+            ]
+        ]
+    },
+    {
+        "id": "mysql-log",
+        "type": "mysql",
+        "z": "640c6734fdac3595",
+        "g": "group-auto-ping",
+        "mydb": "5e560f07cfec117a",
+        "name": "esp_status_log",
+        "x": 1010,
+        "y": 1920,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "57fa4e2f9da05f8c",
+        "type": "ping",
+        "z": "640c6734fdac3595",
+        "d": true,
+        "g": "676847ac6c4f36b7",
+        "protocol": "Automatic",
+        "mode": "timed",
+        "name": "192.168.42.30",
+        "host": "192.168.42.30",
+        "timer": "10",
+        "inputs": 0,
+        "x": 1358.0078125,
+        "y": 1943.5078125,
+        "wires": [
+            [
+                "31e31f348061fa46"
+            ]
+        ]
+    },
+    {
+        "id": "e99f87a558bc82ac",
+        "type": "function",
+        "z": "640c6734fdac3595",
+        "d": true,
+        "g": "676847ac6c4f36b7",
+        "name": "Insert to DB",
+        "func": "function toLocalSqlDate(d) {\n  d = d || new Date();\n  const local = new Date(d.getTime() - d.getTimezoneOffset() * 60000);\n  return local.toISOString().slice(0,19).replace('T',' ');\n}\nlet data = msg.payload;\nlet time = data.event_time\n  ? toLocalSqlDate(new Date(data.event_time))\n  : toLocalSqlDate();\n\nmsg.topic = `\n  INSERT INTO esp_status_log\n    (mac, room, status, time)\n  VALUES\n    (\n      '${data.mac}',\n      '${data.room.replace(/'/g,\"''\")}',\n      '${data.status}',\n      '${time}'\n    );\n`.replace(/\\s+/g,' ');\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1628.0078125,
+        "y": 2043.5078125,
+        "wires": [
+            [
+                "14a385ddcc208434"
+            ]
+        ]
+    },
+    {
+        "id": "14a385ddcc208434",
+        "type": "mysql",
+        "z": "640c6734fdac3595",
+        "d": true,
+        "g": "676847ac6c4f36b7",
+        "mydb": "5e560f07cfec117a",
+        "name": "esp_status_log",
+        "x": 1848.0078125,
+        "y": 2043.5078125,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "a7420d5d77b7a55b",
+        "type": "mqtt in",
+        "z": "640c6734fdac3595",
+        "d": true,
+        "g": "676847ac6c4f36b7",
+        "name": "Check MQTT",
+        "topic": "esp32/status",
+        "qos": "2",
+        "datatype": "json",
+        "broker": "8301192ec347dbc9",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 1348.0078125,
+        "y": 1983.5078125,
+        "wires": [
+            [
+                "31e31f348061fa46"
+            ]
+        ]
+    },
+    {
+        "id": "ae84c1c943c177d4",
+        "type": "comment",
+        "z": "640c6734fdac3595",
+        "d": true,
+        "g": "676847ac6c4f36b7",
+        "name": "เช็ค Status ส่งไปหน้าเว็บและจัดเก็บใน DB",
+        "info": "",
+        "x": 1508.0078125,
+        "y": 1903.5078125,
+        "wires": []
+    },
+    {
+        "id": "31e31f348061fa46",
+        "type": "function",
+        "z": "640c6734fdac3595",
+        "d": true,
+        "g": "676847ac6c4f36b7",
+        "name": "Check Status",
+        "func": "// --- ส่วนตั้งค่าอุปกรณ์ ---\nconst deviceConfig = {\n    '94:B9:7E:CE:01:EF': { ip: '192.168.42.30', room: 'Server Room 1' }\n};\n\n// --- ตั้งค่าการหน่วงเวลา ---\nconst OFFLINE_GRACE_PERIOD_MS = 60000;\nconst MQTT_TIMEOUT_MS = 21000;\n\n// --- ตัวแปร Global ---\nlet states = flow.get('deviceStates') || {};\nconst ipToMacMap = {};\nfor (const mac in deviceConfig) {\n    ipToMacMap[deviceConfig[mac].ip] = mac;\n}\n\n// --- ฟังก์ชันช่วยเหลือ ---\nfunction now() { return Date.now(); }\nfunction normalizeMac(s) {\n    if (!s) return null;\n    s = String(s).toUpperCase().replace(/[^0-9A-F]/g, '');\n    if (s.length !== 12) return null;\n    return s.match(/.{2}/g).join(':');\n}\n\n// --- Logic หลัก ---\nlet mac = null;\nlet sourceType = null;\n\nif (msg.topic && ipToMacMap[msg.topic]) {\n    sourceType = \"Ping\";\n    mac = ipToMacMap[msg.topic];\n} else if (msg.topic && msg.topic.startsWith('esp32/')) {\n    sourceType = \"MQTT\";\n    mac = normalizeMac(msg.payload && msg.payload.mac) || normalizeMac(msg.topic.split('/')[1]);\n}\n\nif (!mac || !deviceConfig[mac]) {\n    return null;\n}\n\nif (!states[mac]) {\n    states[mac] = {\n        pingOk: false, mqttOk: false, lastCombinedState: 'offline',\n        ping_ms: null, lastMqttTs: 0, offlineSince: null\n    };\n}\n\nconst oldState = states[mac].lastCombinedState;\nconst deviceState = states[mac];\n\nif (sourceType === \"MQTT\") {\n    deviceState.mqttOk = (msg.payload && msg.payload.status || '').toString().toLowerCase() === 'online';\n    deviceState.lastMqttTs = now();\n} else { // sourceType === \"Ping\"\n    deviceState.pingOk = (msg.payload !== false);\n    deviceState.ping_ms = (msg.payload !== false) ? Number(msg.payload) : deviceState.ping_ms;\n}\n\nif ((now() - deviceState.lastMqttTs) > MQTT_TIMEOUT_MS) {\n    deviceState.mqttOk = false;\n}\n\nconst potentialState = (deviceState.pingOk && deviceState.mqttOk) ? 'online' : 'offline';\nlet statusMsg = null;\nlet configRequestMsg = null; // ✨ Message สำหรับขอ Config\n\nif (potentialState === 'online') {\n    deviceState.offlineSince = null;\n    if (oldState === 'offline') {\n        deviceState.lastCombinedState = 'online';\n        statusMsg = { // Message สำหรับ Output 1\n            payload: {\n                mac: mac, room: deviceConfig[mac].room, status: 'online',\n                ping_ms: deviceState.ping_ms, event_time: new Date().toISOString(), pin: \"OVERALL\"\n            }\n        };\n        // ✨ เมื่อกลับมา Online ให้สร้าง message เพื่อไปขอ Config ด้วย\n        configRequestMsg = { // Message สำหรับ Output 2\n            payload: {\n                command: \"get_config\",\n                mac: mac,\n                // ใส่ requestId เพื่อให้ติดตามได้ง่าย (optional)\n                requestId: `auto-get-${Date.now()}`\n            }\n        };\n    }\n} else { // potentialState === 'offline'\n    if (oldState === 'online') {\n        if (deviceState.offlineSince === null) {\n            deviceState.offlineSince = now();\n        }\n    }\n    if (deviceState.offlineSince && (now() - deviceState.offlineSince > OFFLINE_GRACE_PERIOD_MS) && oldState === 'online') {\n        deviceState.lastCombinedState = 'offline';\n        statusMsg = {\n            payload: {\n                mac: mac, room: deviceConfig[mac].room, status: 'offline',\n                ping_ms: deviceState.ping_ms, event_time: new Date().toISOString(), pin: \"OVERALL\"\n            }\n        };\n    }\n}\n\nflow.set('deviceStates', states);\n\n// ✨ ส่ง message ออก 2 ขา: [output1, output2]\nreturn [statusMsg, configRequestMsg];",
+        "outputs": 2,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1648.0078125,
+        "y": 1943.5078125,
+        "wires": [
+            [
+                "7b793492b9a90f43"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "7b793492b9a90f43",
+        "type": "switch",
+        "z": "640c6734fdac3595",
+        "d": true,
+        "g": "676847ac6c4f36b7",
+        "name": "Status Switch",
+        "property": "payload.status",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "online",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "offline",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 1408.0078125,
+        "y": 2043.5078125,
+        "wires": [
+            [
+                "e99f87a558bc82ac"
+            ],
+            [
+                "e99f87a558bc82ac"
+            ]
+        ]
+    },
+    {
+        "id": "5493a59f3acfe831",
+        "type": "debug",
+        "z": "640c6734fdac3595",
+        "g": "group-auto-ping",
+        "name": "esp32/status",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1070,
+        "y": 1760,
+        "wires": []
+    },
+    {
+        "id": "76aa5db57dc4f5e5",
+        "type": "debug",
+        "z": "640c6734fdac3595",
+        "g": "group-auto-ping",
+        "name": "Prepare Ping",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 870,
+        "y": 1780,
+        "wires": []
+    },
+    {
+        "id": "3a69979a7faa54f4",
+        "type": "debug",
+        "z": "640c6734fdac3595",
+        "g": "group-auto-ping",
+        "name": "Ping dynamic IP",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1100,
+        "y": 1880,
+        "wires": []
+    },
+    {
+        "id": "b63ac93263c6f1f1",
+        "type": "debug",
+        "z": "640c6734fdac3595",
+        "g": "group-auto-ping",
+        "name": "Insert to DB",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1130,
+        "y": 1820,
+        "wires": []
+    },
+    {
+        "id": "fad0c5a6b7a21425",
+        "type": "debug",
+        "z": "640c6734fdac3595",
+        "g": "group-auto-ping",
+        "name": "Check Status",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 630,
+        "y": 1960,
+        "wires": []
+    },
+    {
+        "id": "3372a01a10b1d515",
+        "type": "debug",
+        "z": "640c6734fdac3595",
+        "g": "group-auto-ping",
+        "name": "Status Switch",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1120,
+        "y": 1940,
         "wires": []
     },
     {
