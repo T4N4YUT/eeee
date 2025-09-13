@@ -544,7 +544,7 @@
         "stream": false,
         "addname": "",
         "property": "payload",
-        "x": 2980,
+        "x": 3100,
         "y": 400,
         "wires": [
             [
@@ -606,7 +606,7 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 3190,
+        "x": 3440,
         "y": 400,
         "wires": [
             [
@@ -896,7 +896,7 @@
         "bot": "ac1b0163af36f2a7",
         "haserroroutput": false,
         "outputs": 1,
-        "x": 3390,
+        "x": 3770,
         "y": 400,
         "wires": [
             []
@@ -1054,6 +1054,7 @@
         "id": "77597513641dbe6d",
         "type": "e-mail",
         "z": "c1a8b9f7.1d2e3f",
+        "d": true,
         "server": "smtp.gmail.com",
         "port": "465",
         "authtype": "BASIC",
@@ -1204,8 +1205,8 @@
             "818d1ba0600fd4e4",
             "3f977e562c7cfa30"
         ],
-        "x": 1654,
-        "y": 379,
+        "x": 1914,
+        "y": 239,
         "w": 792,
         "h": 122
     },
@@ -1215,8 +1216,8 @@
         "z": "640c6734fdac3595",
         "name": "",
         "style": {
-            "stroke": "#ff3f3f",
-            "fill": "#ffbfbf",
+            "stroke": "#000000",
+            "fill": "#7fb7df",
             "label": true,
             "color": "#ffffff"
         },
@@ -1231,12 +1232,15 @@
             "099150f81e18ae84",
             "54ea2bf1620764ea",
             "7d3c211e7f5ac418",
-            "b715c447fd1d3326"
+            "b715c447fd1d3326",
+            "c8535339264f094e",
+            "9dd3a95f243b48ea",
+            "b6e1d5d135cbbd65"
         ],
-        "x": 74,
-        "y": 159,
-        "w": 792,
-        "h": 222
+        "x": 94,
+        "y": 39,
+        "w": 812,
+        "h": 262
     },
     {
         "id": "bf24f1109e557024",
@@ -1253,12 +1257,15 @@
             "59e009aee079776e",
             "62788c726b663f0d",
             "2d7312052d110181",
-            "4de2c1d8785509fe"
+            "4de2c1d8785509fe",
+            "2bd4a9b70bf84131",
+            "9dbbf45c90e6073e",
+            "b783d99212b2714a"
         ],
-        "x": 934,
-        "y": 159,
-        "w": 412,
-        "h": 182
+        "x": 924,
+        "y": 39,
+        "w": 462,
+        "h": 262
     },
     {
         "id": "04363f3d44ea50b0",
@@ -1273,11 +1280,16 @@
         "nodes": [
             "c46318095bd096a9",
             "874c0c450dd51575",
-            "6636d93cad979dc5"
+            "6636d93cad979dc5",
+            "3ccca56ce30903d7",
+            "a5c1e87646cfa1b3",
+            "5848de06518173ba",
+            "18b28f96f1b41483",
+            "dfa92c6ca3e394f6"
         ],
-        "x": 1394,
-        "y": 159,
-        "w": 232,
+        "x": 1454,
+        "y": 39,
+        "w": 412,
         "h": 182
     },
     {
@@ -1291,17 +1303,18 @@
             "label": true
         },
         "nodes": [
-            "5848de06518173ba",
             "61401c21d911973d",
             "2467960b4d1de17c",
             "f0c3bb733466c3cc",
             "84de7bd1374c55ed",
-            "ec4ba7c4df1cd904"
+            "ec4ba7c4df1cd904",
+            "faef73a25c6f6561",
+            "6e9fe1efdf55fb5c"
         ],
-        "x": 1654,
-        "y": 139,
-        "w": 572,
-        "h": 222
+        "x": 1904,
+        "y": 39,
+        "w": 622,
+        "h": 182
     },
     {
         "id": "05736f525f0739c2",
@@ -1323,8 +1336,8 @@
             "1ddb9f9c6361ecbd",
             "d736f2dfb44cb98c"
         ],
-        "x": 1654,
-        "y": 519,
+        "x": 1914,
+        "y": 379,
         "w": 742,
         "h": 162
     },
@@ -1345,12 +1358,13 @@
             "4a3a5a1e6c60f650",
             "18017e07326c690f",
             "2fd31bb845f90d86",
-            "ed784a8e66a138cd"
+            "ed784a8e66a138cd",
+            "f67d6f62f7b2e4e0"
         ],
-        "x": 1654,
-        "y": 699,
-        "w": 732,
-        "h": 162
+        "x": 1914,
+        "y": 559,
+        "w": 612,
+        "h": 202
     },
     {
         "id": "0e0a16b3eb3063ee",
@@ -1369,8 +1383,8 @@
             "04e1039fc59320a4",
             "200d49b6f215cbff"
         ],
-        "x": 1654,
-        "y": 1099,
+        "x": 1914,
+        "y": 1399,
         "w": 612,
         "h": 122
     },
@@ -1392,8 +1406,8 @@
             "b28ee7c1ebe01f7f",
             "91754b0ad2692269"
         ],
-        "x": 2294,
-        "y": 1099,
+        "x": 2554,
+        "y": 1399,
         "w": 952,
         "h": 122
     },
@@ -1424,17 +1438,16 @@
             "c96aa8cdedc6c4b8",
             "7c18457b582e4c85",
             "a7e285e70ff817c1",
-            "f11085f09044723f",
             "271033183b121bd0",
             "ae3aa6d1a10c043e",
             "636d2940b0ca4e78",
             "cacb1e585749c38b",
             "6c05f5d1fd3fc7c0"
         ],
-        "x": 2548,
-        "y": 439,
-        "w": 1238,
-        "h": 508
+        "x": 1914,
+        "y": 999,
+        "w": 872,
+        "h": 382
     },
     {
         "id": "c7e3510948f6624e",
@@ -1456,12 +1469,16 @@
             "6889d15e433846c7",
             "e83de35d3a2f5a12",
             "4557dd1bb41b4158",
-            "2a78b5cd6ba1b8d3"
+            "2a78b5cd6ba1b8d3",
+            "62335ac41ba6e50a",
+            "64cd48591caf09c0",
+            "c829bb366e68e647",
+            "e634590e551137c4"
         ],
-        "x": 74,
-        "y": 679,
-        "w": 952,
-        "h": 242
+        "x": 94,
+        "y": 579,
+        "w": 912,
+        "h": 262
     },
     {
         "id": "be536ff9b21472e1",
@@ -1485,9 +1502,9 @@
             "a3fd0dbfc2793eb9",
             "95fa60aa68b20120"
         ],
-        "x": 74,
-        "y": 1139,
-        "w": 812,
+        "x": 94,
+        "y": 1059,
+        "w": 792,
         "h": 242
     },
     {
@@ -1508,10 +1525,10 @@
             "882fad44105f6afc",
             "0ca34c7a39856c53"
         ],
-        "x": 74,
-        "y": 939,
-        "w": 772,
-        "h": 182
+        "x": 94,
+        "y": 859,
+        "w": 892,
+        "h": 122
     },
     {
         "id": "c7e46bccde3fcec3",
@@ -1529,8 +1546,8 @@
             "536682416efd33c1",
             "d160a84f3489e2ec"
         ],
-        "x": 74,
-        "y": 1399,
+        "x": 94,
+        "y": 1319,
         "w": 632,
         "h": 122
     },
@@ -1552,8 +1569,8 @@
             "6f0a780603bc593e",
             "0bdff17fceb940bf"
         ],
-        "x": 74,
-        "y": 1539,
+        "x": 94,
+        "y": 1459,
         "w": 912,
         "h": 122
     },
@@ -1581,8 +1598,8 @@
             "6e94b291e5b12d2d",
             "57fe4cea096dc9a9"
         ],
-        "x": 2614,
-        "y": 1239,
+        "x": 2874,
+        "y": 1539,
         "w": 1192,
         "h": 182
     },
@@ -1608,10 +1625,11 @@
             "15d9dbfd0c8ce0cb",
             "2a5b63a94c933684",
             "734ded21c1daba8b",
-            "33ca16f0ac839ca5"
+            "33ca16f0ac839ca5",
+            "2d29e4bdbb212815"
         ],
-        "x": 1654,
-        "y": 879,
+        "x": 1914,
+        "y": 779,
         "w": 872,
         "h": 202
     },
@@ -1639,8 +1657,8 @@
             "b06ddb5d8bc71c19",
             "6b0b0398d197ace6"
         ],
-        "x": 1654,
-        "y": 1239,
+        "x": 1914,
+        "y": 1539,
         "w": 942,
         "h": 222
     },
@@ -1666,18 +1684,20 @@
             "e341b45e963b3ef5",
             "ac695710a3a0f1e3",
             "inject-ping-scheduler",
-            "fn-ping-scheduler"
+            "fn-ping-scheduler",
+            "b248acd368a047f0",
+            "af8f7ad43f68ed23",
+            "2305c4099135cc94"
         ],
-        "x": 74,
-        "y": 419,
-        "w": 772,
+        "x": 94,
+        "y": 319,
+        "w": 1132,
         "h": 242
     },
     {
-        "id": "f11085f09044723f",
+        "id": "3dd353a896e35cd3",
         "type": "group",
         "z": "640c6734fdac3595",
-        "g": "3405bc2648d0e0c4",
         "name": "",
         "style": {
             "stroke": "#ff0000",
@@ -1685,15 +1705,16 @@
             "label": true
         },
         "nodes": [
-            "e24642fbead82f06",
-            "36c585400f83a862",
-            "5c3e1788c6456b95",
-            "e1ce3e2fa4bb4a4e",
-            "e23cd9a179d4070e"
+            "e5287d092bd432ea",
+            "d21531b83e0203e0",
+            "66a23818b29b5dbc",
+            "d2db7bec5131a6cf",
+            "15d1d79aeec5b369",
+            "41ae12f967d3101e"
         ],
-        "x": 2574,
-        "y": 739,
-        "w": 452,
+        "x": 2554,
+        "y": 559,
+        "w": 492,
         "h": 182
     },
     {
@@ -1706,8 +1727,8 @@
         "method": "get",
         "upload": false,
         "swaggerDoc": "",
-        "x": 1750,
-        "y": 460,
+        "x": 2010,
+        "y": 320,
         "wires": [
             [
                 "bd8648c95c201831"
@@ -1727,8 +1748,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 1910,
-        "y": 460,
+        "x": 2170,
+        "y": 320,
         "wires": [
             [
                 "8ff2cf1555f60ca7",
@@ -1744,8 +1765,8 @@
         "name": "Response",
         "statusCode": "",
         "headers": {},
-        "x": 2100,
-        "y": 460,
+        "x": 2360,
+        "y": 320,
         "wires": []
     },
     {
@@ -1753,7 +1774,7 @@
         "type": "mqtt in",
         "z": "640c6734fdac3595",
         "g": "ba826875d50440fd",
-        "name": "Temperature and Humidity",
+        "name": "DHT22",
         "topic": "esp32/+/dht",
         "qos": "2",
         "datatype": "json",
@@ -1761,8 +1782,8 @@
         "nl": false,
         "rap": false,
         "inputs": 0,
-        "x": 210,
-        "y": 240,
+        "x": 170,
+        "y": 140,
         "wires": [
             [
                 "a2f165344059f626",
@@ -1775,7 +1796,7 @@
         "type": "function",
         "z": "640c6734fdac3595",
         "g": "ba826875d50440fd",
-        "name": "Data",
+        "name": "Parse DHT22",
         "func": "if (!msg || typeof msg !== 'object') {\n    return null;\n}\nconst p = msg.payload || {};\nfunction toNum(v) {\n    if (v === null || v === undefined) return null;\n    const n = Number(v);\n    return Number.isFinite(n) ? n : null;\n}\nfunction pick(obj, keys) {\n    for (const k of keys) {\n        if (obj?.[k] !== undefined && obj[k] !== null) {\n            return obj[k];\n        }\n    }\n    return undefined;\n}\nfunction normMAC(s) {\n    const hex = String(s || '').toUpperCase().replace(/[^0-9A-F]/g, '');\n    return hex.length === 12 ? hex.match(/.{2}/g).join(':') : undefined;\n}\nfunction toISO(ts) {\n    if (!ts) return new Date().toISOString();\n    if (typeof ts === 'number') {\n        const ms = ts < 1e11 ? ts * 1000 : ts;\n        return new Date(ms).toISOString();\n    }\n    const d = new Date(ts);\n    return isNaN(d) ? new Date().toISOString() : d.toISOString();\n}\nconst avgTemp = toNum(pick(p, ['avg_temp', 'temp', 'temperature', 't']));\nconst avgHum = toNum(pick(p, ['avg_hum', 'humidity', 'hum', 'rh']));\nconst minTemp = toNum(pick(p, ['min_temp', 'min_temperature']));\nconst maxTemp = toNum(pick(p, ['max_temp', 'max_temperature']));\nconst minHum = toNum(pick(p, ['min_hum', 'min_humidity']));\nconst maxHum = toNum(pick(p, ['max_hum', 'max_humidity']));\nconst tempStatus = pick(p, ['temp_status']);\nconst humStatus = pick(p, ['hum_status']);\n\nlet uptime = toNum(pick(p, ['uptime_pct', 'uptime_percent', 'uptime', 'up']));\nif (uptime != null && uptime > 0 && uptime <= 1) {\n    uptime = uptime * 100;\n}\nconst ts = pick(p, ['timestamp', 'time', 'ts', 'iso']);\n\nconst pin = pick(p, ['pin']);\nconst out = {};\nif (avgTemp !== null) out.avg_temp = avgTemp;\nif (avgHum !== null) out.avg_hum = avgHum;\nif (minTemp !== null) out.min_temp = minTemp;\nif (maxTemp !== null) out.max_temp = maxTemp;\nif (minHum !== null) out.min_hum = minHum;\nif (maxHum !== null) out.max_hum = maxHum;\nif (tempStatus !== undefined) out.temp_status = tempStatus;\nif (humStatus !== undefined) out.hum_status = humStatus;\nif (uptime !== null) out.uptime_pct = Math.max(0, Math.min(100, uptime));\nout.timestamp = toISO(ts);\nif (pin !== undefined) out.pin = pin;\nconst mac = normMAC(pick(p, ['mac', 'device_mac', 'eth_mac', 'wifi_mac']));\nif (mac) out.mac = mac;\nif (typeof p.room_id === 'string') out.room_id = p.room_id.toLowerCase();\nmsg.payload = out;\nreturn msg;\n",
         "outputs": 1,
         "timeout": "",
@@ -1783,13 +1804,13 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 410,
-        "y": 280,
+        "x": 360,
+        "y": 180,
         "wires": [
             [
-                "9708f9c81584ae9a",
                 "b715c447fd1d3326",
-                "8a4df22f9b7c306e"
+                "8a4df22f9b7c306e",
+                "c8535339264f094e"
             ]
         ]
     },
@@ -1798,16 +1819,16 @@
         "type": "function",
         "z": "640c6734fdac3595",
         "g": "ba826875d50440fd",
-        "name": "Map mac to room",
-        "func": "// Learn room ↔ mac (แทนที่ของเดิมทั้งก้อน)\nlet p = msg.payload || {};\nlet room = String(p.room_id || '').toLowerCase();\n\nfunction normMAC(s) {\n    if (!s) return null;\n    s = String(s).toUpperCase().replace(/[^0-9A-F]/g, '');\n    if (s.length !== 12) return null;\n    return s.match(/.{2}/g).join(':');\n}\nlet mac = normMAC(p.mac);\nif (!room || !mac) return null;\n\nlet room2mac = flow.get('room2mac') || {};\nlet mac2room = flow.get('mac2room') || {};\nlet room_seen = flow.get('room_seen') || {};\n\n// 1) ถ้า MAC เคยอยู่ห้องอื่น → ย้ายบ้าน: ลบห้องเก่า\nconst prevRoom = mac2room[mac];\nif (prevRoom && prevRoom !== room) {\n    delete room2mac[prevRoom];\n}\n\n// 2) ถ้าห้องนี้เคยมี MAC อื่น → ให้ MAC เก่าออกก่อน\nconst prevMac = room2mac[room];\nif (prevMac && prevMac !== mac) {\n    delete mac2room[prevMac];\n}\n\n// 3) ตั้ง mapping ใหม่แบบ one-to-one\nroom2mac[room] = mac;\nmac2room[mac] = room;\nroom_seen[room] = Date.now();\n\nflow.set('room2mac', room2mac);\nflow.set('mac2room', mac2room);\nflow.set('room_seen', room_seen);\nnode.status({ fill: 'green', shape: 'dot', text: `${room} ↔ ${mac}` });\nreturn null;\n",
+        "name": "Update MAC Map",
+        "func": "let p = msg.payload || {};\nlet room = String(p.room_id || '').toLowerCase();\nfunction normMAC(s) {\n    if (!s) return null;\n    s = String(s).toUpperCase().replace(/[^0-9A-F]/g, '');\n    if (s.length !== 12) return null;\n    return s.match(/.{2}/g).join(':');\n}\nlet mac = normMAC(p.mac);\nif (!room || !mac) return null;\nlet room2mac = flow.get('room2mac') || {};\nlet mac2room = flow.get('mac2room') || {};\nlet room_seen = flow.get('room_seen') || {};\nconst prevRoom = mac2room[mac];\nif (prevRoom && prevRoom !== room) {\n    delete room2mac[prevRoom];\n}\nconst prevMac = room2mac[room];\nif (prevMac && prevMac !== mac) {\n    delete mac2room[prevMac];\n}\nroom2mac[room] = mac;\nmac2room[mac] = room;\nroom_seen[room] = Date.now();\nflow.set('room2mac', room2mac);\nflow.set('mac2room', mac2room);\nflow.set('room_seen', room_seen);\nnode.status({ fill: 'green', shape: 'dot', text: `${room} ↔ ${mac}` });\nreturn null;\n",
         "outputs": 1,
         "timeout": "",
         "noerr": 0,
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 750,
-        "y": 280,
+        "x": 790,
+        "y": 180,
         "wires": [
             []
         ]
@@ -1819,8 +1840,8 @@
         "g": "ba826875d50440fd",
         "mydb": "5e560f07cfec117a",
         "name": "dht_22",
-        "x": 630,
-        "y": 240,
+        "x": 530,
+        "y": 120,
         "wires": [
             []
         ]
@@ -1830,7 +1851,7 @@
         "type": "function",
         "z": "640c6734fdac3595",
         "g": "ba826875d50440fd",
-        "name": "Insert to table dht_22",
+        "name": "SQL Insert dht_22",
         "func": "let d = msg.payload;\nif (!d.mac || !d.timestamp) {\n    node.error(\"❌ Missing mac or timestamp\", d);\n    return null;\n}\nmsg.topic = \"INSERT INTO `dht_22` (mac, pin, timestamp, min_temp, max_temp, avg_temp, min_hum, max_hum, avg_hum) VALUES (?,?,?,?,?,?,?,?,?);\";\nmsg.payload = [\n    d.mac,\n    d.pin,\n    d.timestamp,\n    d.min_temp,\n    d.max_temp,\n    d.avg_temp,\n    d.min_hum,\n    d.max_hum,\n    d.avg_hum\n];\nreturn msg;\n",
         "outputs": 1,
         "timeout": "",
@@ -1838,8 +1859,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 460,
-        "y": 240,
+        "x": 350,
+        "y": 120,
         "wires": [
             [
                 "d266684b84baf6ee"
@@ -1850,7 +1871,7 @@
         "id": "5848de06518173ba",
         "type": "mqtt in",
         "z": "640c6734fdac3595",
-        "g": "d314b1ded220aada",
+        "g": "04363f3d44ea50b0",
         "name": "GET Config",
         "topic": "esp32/response/+/config",
         "qos": "1",
@@ -1859,8 +1880,8 @@
         "nl": false,
         "rap": false,
         "inputs": 0,
-        "x": 1970,
-        "y": 320,
+        "x": 1550,
+        "y": 180,
         "wires": [
             [
                 "874c0c450dd51575"
@@ -1872,7 +1893,7 @@
         "type": "function",
         "z": "640c6734fdac3595",
         "g": "ba826875d50440fd",
-        "name": "Send status",
+        "name": "Check sensor status",
         "func": "// ✨ FIX: รับค่า MAC จาก DB และส่งต่อไปใน payload\nlet seen = Array.isArray(msg.payload) ? msg.payload : [];\nlet now = new Date();\n\n// จัดกลุ่มข้อมูลตาม MAC Address\nconst seenByMac = seen.reduce((acc, curr) => {\n    const mac = curr.mac;\n    if (!acc[mac]) {\n        acc[mac] = [];\n    }\n    acc[mac].push(curr);\n    return acc;\n}, {});\n\n\nlet allResults = [];\n\n// วนลูปตามแต่ละ MAC ที่เจอ\nfor (const mac in seenByMac) {\n    const pinsForMac = seenByMac[mac];\n    let expected = [\"25\", \"26\", \"32\", \"33\"];\n\n    let result = expected.map(pin => {\n        let found = pinsForMac.find(r => r.pin == pin);\n\n        if (!found || !found.last_seen) {\n            return { mac: mac, pin: pin, status: \"OFFLINE\", last_seen: null };\n        }\n\n        let last = new Date(found.last_seen);\n        if (isNaN(last)) {\n            return { mac: mac, pin: pin, status: \"OFFLINE\", last_seen: found.last_seen };\n        }\n\n        // เช็คว่าข้อมูลล่าสุดขาดหายไปเกิน 20 วินาทีหรือไม่\n        let diffSeconds = (now.getTime() - last.getTime()) / 1000;\n        return {\n            mac: mac,\n            pin: pin,\n            last_seen: found.last_seen,\n            status: diffSeconds > 120 ? \"OFFLINE\" : \"ONLINE\"\n        };\n    });\n    allResults = allResults.concat(result);\n}\n\n\nmsg.payload = allResults;\nmsg.topic = 'pin_status_update';\nreturn msg;",
         "outputs": 1,
         "timeout": "",
@@ -1880,12 +1901,12 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 710,
-        "y": 340,
+        "x": 720,
+        "y": 240,
         "wires": [
             [
-                "9708f9c81584ae9a",
-                "4557dd1bb41b4158"
+                "9dd3a95f243b48ea",
+                "b6e1d5d135cbbd65"
             ]
         ]
     },
@@ -1896,8 +1917,8 @@
         "g": "ba826875d50440fd",
         "mydb": "5e560f07cfec117a",
         "name": "dht_22",
-        "x": 550,
-        "y": 340,
+        "x": 510,
+        "y": 240,
         "wires": [
             [
                 "8a4df22f9b7c306e"
@@ -1909,16 +1930,16 @@
         "type": "function",
         "z": "640c6734fdac3595",
         "g": "ba826875d50440fd",
-        "name": "Check sensor offline",
-        "func": "// ✨ FIX: เพิ่มการ SELECT MAC Address เข้ามาใน Query\nmsg.topic = `\nSELECT mac, pin, MAX(timestamp) AS last_seen\nFROM dht_22\nWHERE pin != 'OVERALL'\nGROUP BY mac, pin;\n`;\nreturn msg;",
+        "name": "Sensor Last Seen",
+        "func": "msg.topic = `\nSELECT mac, pin, MAX(timestamp) AS last_seen\nFROM dht_22\nWHERE pin != 'OVERALL'\nGROUP BY mac, pin;\n`;\nreturn msg;",
         "outputs": 1,
         "timeout": "",
         "noerr": 0,
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 380,
-        "y": 340,
+        "x": 350,
+        "y": 240,
         "wires": [
             [
                 "149454b95ccb8189"
@@ -1930,7 +1951,7 @@
         "type": "inject",
         "z": "640c6734fdac3595",
         "g": "ba826875d50440fd",
-        "name": "Every 1 sec",
+        "name": "1s",
         "props": [],
         "repeat": "1",
         "crontab": "",
@@ -1938,7 +1959,7 @@
         "onceDelay": "5",
         "topic": "",
         "x": 190,
-        "y": 340,
+        "y": 240,
         "wires": [
             [
                 "099150f81e18ae84"
@@ -1950,7 +1971,7 @@
         "type": "function",
         "z": "640c6734fdac3595",
         "g": "bf24f1109e557024",
-        "name": "Check reboot",
+        "name": "Command reboot",
         "func": "// Check reboot (single + all) — robust pending (by actionId & by mac)\nconst p = msg.payload || {};\nconst cmd = String(p.cmd || p.command || '').toLowerCase();\nconst actionId = String(p.actionId || '').trim();\nconst room = String(p.room_id || '').toLowerCase();\n\nif (!actionId) {\n  return [null, { payload: { actionId: null, status: 'error', message: 'missing actionId' } }];\n}\n\n// helpers\nfunction normMAC(s){\n  if(!s) return null;\n  s = String(s).toUpperCase().replace(/[^0-9A-F]/g,'');\n  if (s.length !== 12) return null;\n  return s.match(/.{2}/g).join(':');\n}\n\nconst now = Date.now();\nconst TTL_MS = 120000;      // mapping room↔mac สดภายใน 2 นาที\nconst ACK_TIMEOUT_MS = 60000;\n\n// contexts\nconst pendingByAction = flow.get('reboot_pending_by_action') || {}; // actionId -> { targets:Set, seen:Set }\nconst pendingByMac    = flow.get('reboot_pending_by_mac')    || {}; // mac -> actionId\nconst timers          = flow.get('reboot_timers')             || {}; // actionId -> timer\n\n// ========= Reboot All =========\nif (cmd === 'reboot_all' || room === 'all' || Array.isArray(p.mac_list)) {\n  let macs = Array.isArray(p.mac_list) ? p.mac_list.map(normMAC).filter(Boolean) : null;\n  if (!macs || macs.length === 0) {\n    const room2mac = flow.get('room2mac') || {};\n    macs = Object.values(room2mac).map(normMAC).filter(Boolean);\n  }\n  if (!macs.length) {\n    return [null, { payload: { actionId, status: 'error', message: 'no target MACs' } }];\n  }\n\n  // register pending (by actionId + by mac)\n  pendingByAction[actionId] = { targets: new Set(macs), seen: new Set() };\n  macs.forEach(m => { pendingByMac[m] = actionId; });\n\n  // timeout per actionId\n  if (timers[actionId]) clearTimeout(timers[actionId]);\n  timers[actionId] = setTimeout(() => {\n    const _pAct = flow.get('reboot_pending_by_action') || {};\n    const _tim  = flow.get('reboot_timers') || {};\n    const st = _pAct[actionId];\n    if (st) {\n      // cleanup mac->action\n      st.targets.forEach(m => { \n        let map = flow.get('reboot_pending_by_mac') || {};\n        if (map[m] === actionId) { delete map[m]; flow.set('reboot_pending_by_mac', map); }\n      });\n      delete _pAct[actionId];\n      delete _tim[actionId];\n      flow.set('reboot_pending_by_action', _pAct);\n      flow.set('reboot_timers', _tim);\n      node.send([null, { topic:'actions/ack', payload: { actionId, status:'timeout', message:'reboot_all partial/timeout' } }]);\n    }\n  }, ACK_TIMEOUT_MS);\n\n  flow.set('reboot_pending_by_action', pendingByAction);\n  flow.set('reboot_pending_by_mac', pendingByMac);\n  flow.set('reboot_timers', timers);\n\n  const outMsgs = macs.map(m => ({\n    topic: `esp32/control/${m}/reboot`,\n    payload: { cmd:'Reboot', room_id:null, mac:m, actionId, ts:now }\n  }));\n  const ack = { payload:{ actionId, status:'accepted', message:`broadcast to ${macs.length} devices`} };\n  return [outMsgs, ack];\n}\n\n// ========= Reboot Single =========\nlet mac = normMAC(p.mac);\nif (!mac && room) {\n  const room2mac = flow.get('room2mac') || {};\n  const room_seen = flow.get('room_seen') || {};\n  const m = normMAC(room2mac[room]);\n  const ts = room_seen[room] || 0;\n  if (m && (Date.now()-ts) <= TTL_MS) mac = m;\n}\nif (!mac) {\n  return [null, { payload: { actionId, status:'error', message:`no fresh mapping for ${room}` } }];\n}\n\npendingByAction[actionId] = { targets: new Set([mac]), seen: new Set() };\npendingByMac[mac] = actionId;\n\n// timeout per actionId\nif (timers[actionId]) clearTimeout(timers[actionId]);\ntimers[actionId] = setTimeout(() => {\n  const _pAct = flow.get('reboot_pending_by_action') || {};\n  const _pMac = flow.get('reboot_pending_by_mac') || {};\n  const _tim  = flow.get('reboot_timers') || {};\n  const st = _pAct[actionId];\n  if (st) {\n    st.targets.forEach(m => { if (_pMac[m] === actionId) delete _pMac[m]; });\n    delete _pAct[actionId];\n    delete _tim[actionId];\n    flow.set('reboot_pending_by_mac', _pMac);\n    flow.set('reboot_pending_by_action', _pAct);\n    flow.set('reboot_timers', _tim);\n    node.send([null, { topic:'actions/ack', payload:{ actionId, status:'timeout', message:`no response from ${mac}` } }]);\n  }\n}, ACK_TIMEOUT_MS);\n\nflow.set('reboot_pending_by_action', pendingByAction);\nflow.set('reboot_pending_by_mac', pendingByMac);\nflow.set('reboot_timers', timers);\n\nconst mqttMsg = {\n  topic: `esp32/control/${mac}/reboot`,\n  payload: { cmd:'Reboot', room_id:room||null, mac, actionId, ts:now }\n};\nconst ack = { payload:{ actionId, status:'accepted', message:`reboot sent to ${mac}` } };\nreturn [[mqttMsg], ack];\n",
         "outputs": 2,
         "timeout": "",
@@ -1958,14 +1979,14 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 1250,
-        "y": 300,
+        "x": 1090,
+        "y": 160,
         "wires": [
             [
                 "59e009aee079776e"
             ],
             [
-                "9708f9c81584ae9a"
+                "9dbbf45c90e6073e"
             ]
         ]
     },
@@ -1984,8 +2005,8 @@
         "correl": "",
         "expiry": "",
         "broker": "8301192ec347dbc9",
-        "x": 1250,
-        "y": 240,
+        "x": 1290,
+        "y": 140,
         "wires": []
     },
     {
@@ -2003,7 +2024,7 @@
         "rh": 0,
         "inputs": 0,
         "x": 1030,
-        "y": 240,
+        "y": 260,
         "wires": [
             [
                 "2d7312052d110181"
@@ -2023,11 +2044,11 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 1030,
-        "y": 300,
+        "x": 1190,
+        "y": 260,
         "wires": [
             [
-                "9708f9c81584ae9a"
+                "2bd4a9b70bf84131"
             ]
         ]
     },
@@ -2054,8 +2075,8 @@
         "checkall": "true",
         "repair": false,
         "outputs": 2,
-        "x": 1770,
-        "y": 240,
+        "x": 2070,
+        "y": 160,
         "wires": [
             [
                 "84de7bd1374c55ed"
@@ -2080,8 +2101,8 @@
         "correl": "",
         "expiry": "",
         "broker": "8301192ec347dbc9",
-        "x": 1950,
-        "y": 260,
+        "x": 2250,
+        "y": 180,
         "wires": []
     },
     {
@@ -2099,8 +2120,8 @@
         "correl": "",
         "expiry": "",
         "broker": "8301192ec347dbc9",
-        "x": 2120,
-        "y": 220,
+        "x": 2420,
+        "y": 160,
         "wires": []
     },
     {
@@ -2113,8 +2134,8 @@
         "method": "get",
         "upload": false,
         "swaggerDoc": "",
-        "x": 1750,
-        "y": 1180,
+        "x": 2010,
+        "y": 1480,
         "wires": [
             [
                 "f365bff0639c4d0f"
@@ -2134,8 +2155,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 1920,
-        "y": 1180,
+        "x": 2180,
+        "y": 1480,
         "wires": [
             [
                 "882559e213bde260"
@@ -2149,8 +2170,8 @@
         "g": "0e0a16b3eb3063ee",
         "mydb": "5e560f07cfec117a",
         "name": "dht22",
-        "x": 2070,
-        "y": 1180,
+        "x": 2330,
+        "y": 1480,
         "wires": [
             [
                 "04e1039fc59320a4"
@@ -2167,8 +2188,8 @@
         "headers": {
             "content-type": "application/json; charset=utf-8"
         },
-        "x": 2190,
-        "y": 1180,
+        "x": 2450,
+        "y": 1480,
         "wires": []
     },
     {
@@ -2184,12 +2205,12 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 1520,
-        "y": 240,
+        "x": 1680,
+        "y": 120,
         "wires": [
             [
-                "61401c21d911973d",
-                "8527f967384360ec"
+                "18b28f96f1b41483",
+                "dfa92c6ca3e394f6"
             ]
         ]
     },
@@ -2206,11 +2227,11 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 1520,
-        "y": 300,
+        "x": 1720,
+        "y": 180,
         "wires": [
             [
-                "9708f9c81584ae9a"
+                "3ccca56ce30903d7"
             ]
         ]
     },
@@ -2224,8 +2245,8 @@
         "method": "get",
         "upload": false,
         "swaggerDoc": "",
-        "x": 1780,
-        "y": 600,
+        "x": 2040,
+        "y": 460,
         "wires": [
             [
                 "945c7a052f56ca79"
@@ -2245,8 +2266,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 2000,
-        "y": 600,
+        "x": 2260,
+        "y": 460,
         "wires": [
             [
                 "4efc7f7d6266942a"
@@ -2263,8 +2284,8 @@
         "headers": {
             "content-type": "application/json"
         },
-        "x": 2160,
-        "y": 600,
+        "x": 2420,
+        "y": 460,
         "wires": []
     },
     {
@@ -2277,8 +2298,8 @@
         "method": "post",
         "upload": false,
         "swaggerDoc": "",
-        "x": 1780,
-        "y": 640,
+        "x": 2040,
+        "y": 500,
         "wires": [
             [
                 "d487db29e6d6f598"
@@ -2294,8 +2315,8 @@
         "property": "payload",
         "action": "",
         "pretty": false,
-        "x": 1960,
-        "y": 640,
+        "x": 2220,
+        "y": 500,
         "wires": [
             [
                 "7b38579d583a6efe"
@@ -2315,8 +2336,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 2120,
-        "y": 640,
+        "x": 2380,
+        "y": 500,
         "wires": [
             [
                 "1ddb9f9c6361ecbd"
@@ -2332,8 +2353,8 @@
         "name": "OK or NOT",
         "statusCode": "",
         "headers": {},
-        "x": 2300,
-        "y": 640,
+        "x": 2560,
+        "y": 500,
         "wires": []
     },
     {
@@ -2346,8 +2367,8 @@
         "method": "get",
         "upload": false,
         "swaggerDoc": "",
-        "x": 1760,
-        "y": 780,
+        "x": 2020,
+        "y": 640,
         "wires": [
             [
                 "9353c7268406244b"
@@ -2367,8 +2388,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 1960,
-        "y": 780,
+        "x": 2220,
+        "y": 640,
         "wires": [
             [
                 "6d0dbf7cb49c607c"
@@ -2385,8 +2406,8 @@
         "headers": {
             "content-type": "application/json"
         },
-        "x": 2130,
-        "y": 780,
+        "x": 2390,
+        "y": 640,
         "wires": []
     },
     {
@@ -2399,8 +2420,8 @@
         "method": "post",
         "upload": false,
         "swaggerDoc": "",
-        "x": 1770,
-        "y": 820,
+        "x": 2030,
+        "y": 700,
         "wires": [
             [
                 "18017e07326c690f"
@@ -2420,12 +2441,12 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 1960,
-        "y": 820,
+        "x": 2220,
+        "y": 700,
         "wires": [
             [
                 "2fd31bb845f90d86",
-                "e1ce3e2fa4bb4a4e"
+                "f67d6f62f7b2e4e0"
             ]
         ]
     },
@@ -2437,8 +2458,8 @@
         "name": "200/400 Response",
         "statusCode": "",
         "headers": {},
-        "x": 2270,
-        "y": 820,
+        "x": 2410,
+        "y": 680,
         "wires": []
     },
     {
@@ -2454,8 +2475,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 1950,
-        "y": 220,
+        "x": 2250,
+        "y": 140,
         "wires": [
             [
                 "f0c3bb733466c3cc"
@@ -2472,8 +2493,8 @@
         "method": "get",
         "upload": false,
         "swaggerDoc": "",
-        "x": 2420,
-        "y": 1180,
+        "x": 2680,
+        "y": 1480,
         "wires": [
             [
                 "58589672a110f473"
@@ -2493,8 +2514,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 2630,
-        "y": 1180,
+        "x": 2890,
+        "y": 1480,
         "wires": [
             [
                 "eccd6e3261b7615b"
@@ -2508,8 +2529,8 @@
         "g": "b4a00978e789863d",
         "mydb": "5e560f07cfec117a",
         "name": "Query Status Log",
-        "x": 2830,
-        "y": 1180,
+        "x": 3090,
+        "y": 1480,
         "wires": [
             [
                 "6022786dd2200fa7"
@@ -2529,8 +2550,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 3010,
-        "y": 1180,
+        "x": 3270,
+        "y": 1480,
         "wires": [
             [
                 "b28ee7c1ebe01f7f"
@@ -2581,8 +2602,8 @@
             "33": "\"",
             "34": "}"
         },
-        "x": 3170,
-        "y": 1180,
+        "x": 3430,
+        "y": 1480,
         "wires": []
     },
     {
@@ -2599,8 +2620,8 @@
         "rap": false,
         "rh": 0,
         "inputs": 0,
-        "x": 190,
-        "y": 820,
+        "x": 230,
+        "y": 780,
         "wires": [
             [
                 "f8fa173138913533",
@@ -2621,8 +2642,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 640,
-        "y": 820,
+        "x": 660,
+        "y": 720,
         "wires": [
             [
                 "40dc39f6a661c710"
@@ -2644,63 +2665,11 @@
         "g": "c7e3510948f6624e",
         "mydb": "5e560f07cfec117a",
         "name": "alert_events",
-        "x": 910,
-        "y": 760,
+        "x": 870,
+        "y": 680,
         "wires": [
             []
         ]
-    },
-    {
-        "id": "e24642fbead82f06",
-        "type": "inject",
-        "z": "640c6734fdac3595",
-        "g": "f11085f09044723f",
-        "name": "Load Rules every 1 mins",
-        "props": [],
-        "repeat": "2",
-        "crontab": "",
-        "once": true,
-        "onceDelay": 0.1,
-        "topic": "",
-        "x": 2730,
-        "y": 820,
-        "wires": [
-            [
-                "e1ce3e2fa4bb4a4e"
-            ]
-        ]
-    },
-    {
-        "id": "36c585400f83a862",
-        "type": "mysql",
-        "z": "640c6734fdac3595",
-        "g": "f11085f09044723f",
-        "mydb": "5e560f07cfec117a",
-        "name": "alert_rules",
-        "x": 2690,
-        "y": 880,
-        "wires": [
-            [
-                "5c3e1788c6456b95"
-            ]
-        ]
-    },
-    {
-        "id": "5c3e1788c6456b95",
-        "type": "function",
-        "z": "640c6734fdac3595",
-        "g": "f11085f09044723f",
-        "name": "Rule loader",
-        "func": "// Function: load_rules_to_global (FIXED to include sensor_connectivity)\nconst rules = msg.payload;\nconst deviceMap = flow.get('device_map', 'file') || {};\n\n// ค้นหากฎของระบบ (system-level rules) ทั้งหมดที่เรามี\nconst systemTempRule = rules.find(r => r.scope === 'system' && r.metric === 'temp' && r.active) || {};\nconst systemHumRule = rules.find(r => r.scope === 'system' && r.metric === 'hum' && r.active) || {};\nconst systemConnRule = rules.find(r => r.scope === 'system' && r.metric === 'connectivity' && r.active) || {};\n// --- ✨ เพิ่มบรรทัดนี้เข้ามา ✨ ---\nconst systemSensorConnRule = rules.find(r => r.scope === 'system' && r.metric === 'sensor_connectivity' && r.active) || {};\n// --- ✨ สิ้นสุดส่วนที่เพิ่ม ✨ ---\n\nconst roomRules = rules.filter(r => r.scope === 'room' && r.active);\nconst sensorRules = rules.filter(r => r.scope === 'sensor' && r.active);\n\nconst effectiveMap = {};\n\nconst inherit = (specific, room, system) => {\n    const origins = {};\n    const merged = {};\n    const allKeys = new Set([...Object.keys(system), ...Object.keys(room), ...Object.keys(specific)]);\n\n    for (const key of allKeys) {\n        if (specific && specific[key] !== null && specific[key] !== undefined) {\n            merged[key] = specific[key];\n            origins[key] = 'sensor';\n        } else if (room && room[key] !== null && room[key] !== undefined) {\n            merged[key] = room[key];\n            origins[key] = 'room';\n        } else if (system && system[key] !== null && system[key] !== undefined) {\n            merged[key] = system[key];\n            origins[key] = 'system';\n        }\n    }\n    merged.origins = origins;\n    return merged;\n};\n\nconst allMacs = Object.values(deviceMap).filter(val => typeof val === 'string' && val.includes(':'));\n\nfor (const mac of allMacs) {\n    const sensorsForDevice = sensorRules.filter(r => r.mac === mac);\n\n    const roomTempRule = roomRules.find(r => r.mac === mac && r.metric === 'temp') || {};\n    const roomHumRule = roomRules.find(r => r.mac === mac && r.metric === 'hum') || {};\n\n    const overallTempKey = `${mac}|overall|temp`;\n    effectiveMap[overallTempKey] = inherit({}, roomTempRule, systemTempRule);\n\n    const overallHumKey = `${mac}|overall|hum`;\n    effectiveMap[overallHumKey] = inherit({}, roomHumRule, systemHumRule);\n\n    for (const sensorRule of sensorsForDevice) {\n        const key = `${mac}|${sensorRule.sensor_name}|${sensorRule.metric}`;\n        if (sensorRule.metric === 'temp') {\n            effectiveMap[key] = inherit(sensorRule, roomTempRule, systemTempRule);\n        } else if (sensorRule.metric === 'hum') {\n            effectiveMap[key] = inherit(sensorRule, roomHumRule, systemHumRule);\n        }\n    }\n}\n\neffectiveMap['system_temp'] = systemTempRule;\neffectiveMap['system_hum'] = systemHumRule;\neffectiveMap['system_connectivity'] = systemConnRule;\n// --- ✨ เพิ่มบรรทัดนี้เข้ามา ✨ ---\neffectiveMap['system_sensor_connectivity'] = systemSensorConnRule; \n// --- ✨ สิ้นสุดส่วนที่เพิ่ม ✨ ---\n\nglobal.set('effectiveRuleMap', effectiveMap);\nnode.status({ fill: 'green', shape: 'dot', text: `Loaded ${Object.keys(effectiveMap).length} effective rules` });\n\nreturn null;",
-        "outputs": 0,
-        "timeout": 0,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 2870,
-        "y": 880,
-        "wires": []
     },
     {
         "id": "785762e88fcf5492",
@@ -2712,8 +2681,8 @@
         "method": "get",
         "upload": false,
         "swaggerDoc": "",
-        "x": 180,
-        "y": 1220,
+        "x": 200,
+        "y": 1140,
         "wires": [
             [
                 "c4ec9302faebc92a"
@@ -2733,8 +2702,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 400,
-        "y": 1220,
+        "x": 420,
+        "y": 1140,
         "wires": [
             [
                 "72c7559d7d6aba22"
@@ -2748,8 +2717,8 @@
         "g": "be536ff9b21472e1",
         "mydb": "5e560f07cfec117a",
         "name": "alert_events",
-        "x": 170,
-        "y": 1280,
+        "x": 190,
+        "y": 1200,
         "wires": [
             [
                 "b47e7018602a98b6"
@@ -2766,8 +2735,8 @@
         "headers": {
             "content-type": "application/json; charset=utf-8"
         },
-        "x": 640,
-        "y": 1280,
+        "x": 660,
+        "y": 1200,
         "wires": []
     },
     {
@@ -2780,8 +2749,8 @@
         "method": "get",
         "upload": false,
         "swaggerDoc": "",
-        "x": 220,
-        "y": 1480,
+        "x": 240,
+        "y": 1400,
         "wires": [
             [
                 "536682416efd33c1"
@@ -2801,8 +2770,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 440,
-        "y": 1480,
+        "x": 460,
+        "y": 1400,
         "wires": [
             [
                 "d160a84f3489e2ec"
@@ -2819,8 +2788,8 @@
         "method": "put",
         "upload": false,
         "swaggerDoc": "",
-        "x": 2690,
-        "y": 640,
+        "x": 2030,
+        "y": 1200,
         "wires": [
             [
                 "cfbe7be2bb75dc23"
@@ -2840,8 +2809,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 2870,
-        "y": 640,
+        "x": 2210,
+        "y": 1200,
         "wires": [
             [
                 "c864607514d350c4"
@@ -2855,8 +2824,8 @@
         "g": "3405bc2648d0e0c4",
         "mydb": "5e560f07cfec117a",
         "name": "alert_rules",
-        "x": 3030,
-        "y": 640,
+        "x": 2370,
+        "y": 1200,
         "wires": [
             [
                 "bdb285d12433aad8"
@@ -2876,32 +2845,11 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 3210,
-        "y": 640,
+        "x": 2550,
+        "y": 1200,
         "wires": [
             [
                 "d54032355d69570c"
-            ]
-        ]
-    },
-    {
-        "id": "e1ce3e2fa4bb4a4e",
-        "type": "function",
-        "z": "640c6734fdac3595",
-        "g": "f11085f09044723f",
-        "name": "Query rule",
-        "func": "// โค้ดสำหรับโหนด Function: Build SQL for Rules\nmsg.topic = \"SELECT * FROM alert_rules WHERE active = 1 ORDER BY scope DESC\";\nreturn msg;",
-        "outputs": 1,
-        "timeout": 0,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 2930,
-        "y": 820,
-        "wires": [
-            [
-                "36c585400f83a862"
             ]
         ]
     },
@@ -2918,8 +2866,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 420,
-        "y": 820,
+        "x": 440,
+        "y": 740,
         "wires": [
             [
                 "bab874a3ec5e3d7f"
@@ -2936,8 +2884,8 @@
         "method": "get",
         "upload": false,
         "swaggerDoc": "",
-        "x": 2690,
-        "y": 700,
+        "x": 2030,
+        "y": 1260,
         "wires": [
             [
                 "7c18457b582e4c85"
@@ -2957,8 +2905,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 2880,
-        "y": 700,
+        "x": 2220,
+        "y": 1260,
         "wires": [
             [
                 "a7e285e70ff817c1"
@@ -2972,8 +2920,8 @@
         "g": "3405bc2648d0e0c4",
         "mydb": "5e560f07cfec117a",
         "name": "alert_rules",
-        "x": 3050,
-        "y": 700,
+        "x": 2390,
+        "y": 1260,
         "wires": [
             [
                 "472eab2a072d1c93"
@@ -2990,8 +2938,8 @@
         "headers": {
             "content-type": "application/json; charset=utf-8"
         },
-        "x": 3220,
-        "y": 700,
+        "x": 2560,
+        "y": 1260,
         "wires": []
     },
     {
@@ -3007,8 +2955,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 430,
-        "y": 1280,
+        "x": 450,
+        "y": 1200,
         "wires": [
             [
                 "289352e7c0c2f154"
@@ -3025,8 +2973,8 @@
         "method": "post",
         "upload": false,
         "swaggerDoc": "",
-        "x": 3150,
-        "y": 780,
+        "x": 2050,
+        "y": 1320,
         "wires": [
             [
                 "636d2940b0ca4e78"
@@ -3046,8 +2994,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 3370,
-        "y": 780,
+        "x": 2260,
+        "y": 1320,
         "wires": [
             [
                 "ae3aa6d1a10c043e"
@@ -3070,8 +3018,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 3550,
-        "y": 740,
+        "x": 2450,
+        "y": 1300,
         "wires": [
             [
                 "6c05f5d1fd3fc7c0"
@@ -3086,8 +3034,8 @@
         "name": "400 Bad Request",
         "statusCode": "400",
         "headers": {},
-        "x": 3570,
-        "y": 820,
+        "x": 2470,
+        "y": 1340,
         "wires": []
     },
     {
@@ -3098,8 +3046,8 @@
         "name": "200 OK",
         "statusCode": "200",
         "headers": {},
-        "x": 3700,
-        "y": 740,
+        "x": 2600,
+        "y": 1300,
         "wires": []
     },
     {
@@ -3109,8 +3057,8 @@
         "g": "b43a3178c92d9fc0",
         "name": "สำหรับ Sync เวลา ESP32",
         "info": "",
-        "x": 1790,
-        "y": 420,
+        "x": 2050,
+        "y": 280,
         "wires": []
     },
     {
@@ -3118,10 +3066,10 @@
         "type": "comment",
         "z": "640c6734fdac3595",
         "g": "ba826875d50440fd",
-        "name": "ข้อมูลอุณหภูมิ-ความชื้น และเช็คสถานะรายเซ็นเซอร์",
+        "name": "Temp/Hum + Sensor Status",
         "info": "",
-        "x": 280,
-        "y": 200,
+        "x": 240,
+        "y": 80,
         "wires": []
     },
     {
@@ -3132,7 +3080,7 @@
         "name": "Reboot Device",
         "info": "",
         "x": 1040,
-        "y": 200,
+        "y": 80,
         "wires": []
     },
     {
@@ -3142,8 +3090,8 @@
         "g": "04363f3d44ea50b0",
         "name": "แปะหมายเลขคำขอ",
         "info": "",
-        "x": 1500,
-        "y": 200,
+        "x": 1700,
+        "y": 80,
         "wires": []
     },
     {
@@ -3153,8 +3101,8 @@
         "g": "d314b1ded220aada",
         "name": "Load or Save Config",
         "info": "",
-        "x": 1770,
-        "y": 180,
+        "x": 2030,
+        "y": 80,
         "wires": []
     },
     {
@@ -3164,8 +3112,8 @@
         "g": "05736f525f0739c2",
         "name": "สำหรับเก็บ Map mac to room",
         "info": "",
-        "x": 1800,
-        "y": 560,
+        "x": 2060,
+        "y": 420,
         "wires": []
     },
     {
@@ -3175,8 +3123,8 @@
         "g": "63f59a4d8f7d47e7",
         "name": "สำหรับเก็บ Map pin to room",
         "info": "",
-        "x": 1790,
-        "y": 740,
+        "x": 2050,
+        "y": 600,
         "wires": []
     },
     {
@@ -3186,8 +3134,8 @@
         "g": "0e0a16b3eb3063ee",
         "name": "สำหรับ Query data ไปสร้างกราฟ Temp&Hum",
         "info": "",
-        "x": 1840,
-        "y": 1140,
+        "x": 2100,
+        "y": 1440,
         "wires": []
     },
     {
@@ -3197,8 +3145,8 @@
         "g": "b4a00978e789863d",
         "name": "สำหรับ Query data แสดง Uptime",
         "info": "",
-        "x": 2450,
-        "y": 1140,
+        "x": 2710,
+        "y": 1440,
         "wires": []
     },
     {
@@ -3219,8 +3167,8 @@
         "topic": "",
         "payload": "{}",
         "payloadType": "json",
-        "x": 2710,
-        "y": 520,
+        "x": 2050,
+        "y": 1080,
         "wires": [
             [
                 "4ecc2247b3a33d89"
@@ -3240,8 +3188,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 3020,
-        "y": 520,
+        "x": 2360,
+        "y": 1080,
         "wires": [
             [
                 "53bee7f5fd9eed25"
@@ -3263,8 +3211,8 @@
         "correl": "",
         "expiry": "",
         "broker": "8301192ec347dbc9",
-        "x": 3240,
-        "y": 520,
+        "x": 2580,
+        "y": 1080,
         "wires": []
     },
     {
@@ -3280,8 +3228,8 @@
         "nl": false,
         "rap": false,
         "inputs": 0,
-        "x": 2680,
-        "y": 580,
+        "x": 2020,
+        "y": 1140,
         "wires": [
             [
                 "57b8ad027dff3e5a"
@@ -3301,8 +3249,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 2880,
-        "y": 580,
+        "x": 2220,
+        "y": 1140,
         "wires": [
             [
                 "8175b4f18a6f99c6"
@@ -3333,8 +3281,8 @@
                 "valueValue": "application/json"
             }
         ],
-        "x": 3090,
-        "y": 580,
+        "x": 2430,
+        "y": 1140,
         "wires": [
             []
         ]
@@ -3346,8 +3294,8 @@
         "g": "3405bc2648d0e0c4",
         "name": "Sync Alerts from Device to DB",
         "info": "",
-        "x": 2720,
-        "y": 480,
+        "x": 2060,
+        "y": 1040,
         "wires": []
     },
     {
@@ -3355,16 +3303,16 @@
         "type": "function",
         "z": "640c6734fdac3595",
         "g": "ba826875d50440fd",
-        "name": "GET",
-        "func": "const payload = msg.payload;\n\n// 1. ดึงข้อมูล Device Map จาก file context\nconst deviceMap = flow.get('device_map', 'file') || {};\n\n// 2. ดึง MAC address จาก payload ที่เข้ามา\nconst mac = payload.mac;\n\nif (mac) {\n    // 3. วนลูปหา room_id ที่ตรงกับ MAC address ใน Device Map\n    for (const key in deviceMap) {\n        // คีย์ที่เก็บ MAC จะขึ้นต้นด้วย \"room\" เช่น \"roomA\"\n        if (key.startsWith('room') && deviceMap[key] === mac) {\n            // 4. ได้ room_id แล้ว (จาก key: \"roomA\" -> \"room-a\")\n            const room_id = `room-${key.slice(-1).toLowerCase()}`;\n\n            // 5. เติม room_id ลงใน payload\n            payload.room_id = room_id;\n            msg.payload = payload;\n            node.status({ fill: 'blue', shape: 'dot', text: `Enriched with room: ${room_id}` });\n            return msg;\n        }\n    }\n}\n\n// ถ้าไม่เจอ MAC ใน Device Map หรือไม่มี MAC เลย ให้ส่งต่อโดยไม่เติม room_id\nnode.warn(\"Cannot find a matching room_id for MAC: \" + mac);\nnode.status({ fill: 'yellow', shape: 'dot', text: 'No room match' });\nreturn msg;\n",
+        "name": "Add Room ID",
+        "func": "const payload = msg.payload;\nconst deviceMap = flow.get('device_map', 'file') || {};\nconst mac = payload.mac;\nif (mac) {\n    for (const key in deviceMap) {\n        if (key.startsWith('room') && deviceMap[key] === mac) {\n            const room_id = `room-${key.slice(-1).toLowerCase()}`;\n            payload.room_id = room_id;\n            msg.payload = payload;\n            node.status({ fill: 'blue', shape: 'dot', text: `Enriched with room: ${room_id}` });\n            return msg;\n        }\n    }\n}\nnode.warn(\"Cannot find a matching room_id for MAC: \" + mac);\nnode.status({ fill: 'yellow', shape: 'dot', text: 'No room match' });\nreturn msg;\n",
         "outputs": 1,
         "timeout": "",
         "noerr": 0,
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 590,
-        "y": 280,
+        "x": 600,
+        "y": 180,
         "wires": [
             [
                 "9cd0de312f0aaebf"
@@ -3379,8 +3327,8 @@
         "name": "200 OK",
         "statusCode": "200",
         "headers": {},
-        "x": 620,
-        "y": 1480,
+        "x": 640,
+        "y": 1400,
         "wires": []
     },
     {
@@ -3391,8 +3339,8 @@
         "name": "OK",
         "statusCode": "200",
         "headers": {},
-        "x": 3370,
-        "y": 640,
+        "x": 2710,
+        "y": 1200,
         "wires": []
     },
     {
@@ -3402,19 +3350,8 @@
         "g": "c7e3510948f6624e",
         "name": "รับข้อมูล Sensor มาประเมินเงื่อนไข",
         "info": "",
-        "x": 230,
-        "y": 740,
-        "wires": []
-    },
-    {
-        "id": "e23cd9a179d4070e",
-        "type": "comment",
-        "z": "640c6734fdac3595",
-        "g": "f11085f09044723f",
-        "name": "อัพเดทเงื่อนไขในการใช้กับ Alert",
-        "info": "",
-        "x": 2720,
-        "y": 780,
+        "x": 250,
+        "y": 620,
         "wires": []
     },
     {
@@ -3424,8 +3361,8 @@
         "g": "be536ff9b21472e1",
         "name": "โหลด Alert ไปแสดงหน้าเว็บ",
         "info": "",
-        "x": 210,
-        "y": 1180,
+        "x": 230,
+        "y": 1100,
         "wires": []
     },
     {
@@ -3441,8 +3378,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 2140,
-        "y": 420,
+        "x": 2400,
+        "y": 280,
         "wires": [
             [
                 "3f977e562c7cfa30"
@@ -3456,8 +3393,8 @@
         "g": "b43a3178c92d9fc0",
         "mydb": "5e560f07cfec117a",
         "name": "alert_events",
-        "x": 2350,
-        "y": 440,
+        "x": 2610,
+        "y": 300,
         "wires": [
             []
         ]
@@ -3472,8 +3409,8 @@
         "method": "post",
         "upload": false,
         "swaggerDoc": "",
-        "x": 200,
-        "y": 1020,
+        "x": 220,
+        "y": 940,
         "wires": [
             [
                 "229b4521996cbe60"
@@ -3493,8 +3430,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 380,
-        "y": 1020,
+        "x": 400,
+        "y": 940,
         "wires": [
             [
                 "526a0f4d7c13dbfa"
@@ -3508,8 +3445,8 @@
         "g": "bc3f5b7e2b5083ca",
         "mydb": "5e560f07cfec117a",
         "name": "alert_acks",
-        "x": 650,
-        "y": 1020,
+        "x": 550,
+        "y": 940,
         "wires": [
             [
                 "0ca34c7a39856c53"
@@ -3524,8 +3461,8 @@
         "name": "200 OK",
         "statusCode": "200",
         "headers": {},
-        "x": 760,
-        "y": 1080,
+        "x": 900,
+        "y": 940,
         "wires": []
     },
     {
@@ -3535,8 +3472,8 @@
         "g": "bc3f5b7e2b5083ca",
         "name": "รับ Action การรับทราบ Alert มาอัพเดท",
         "info": "",
-        "x": 240,
-        "y": 980,
+        "x": 260,
+        "y": 900,
         "wires": []
     },
     {
@@ -3552,8 +3489,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 470,
-        "y": 1080,
+        "x": 730,
+        "y": 940,
         "wires": [
             [
                 "c9fa0b4b9bb161cd"
@@ -3567,8 +3504,8 @@
         "g": "c7e46bccde3fcec3",
         "name": "Load กฎของแต่ละ sensor มาใช้",
         "info": "",
-        "x": 220,
-        "y": 1440,
+        "x": 240,
+        "y": 1360,
         "wires": []
     },
     {
@@ -3584,11 +3521,11 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 910,
-        "y": 880,
+        "x": 860,
+        "y": 760,
         "wires": [
             [
-                "9708f9c81584ae9a"
+                "64cd48591caf09c0"
             ]
         ]
     },
@@ -3602,8 +3539,8 @@
         "method": "get",
         "upload": false,
         "swaggerDoc": "",
-        "x": 210,
-        "y": 1620,
+        "x": 230,
+        "y": 1540,
         "wires": [
             [
                 "6f0a780603bc593e"
@@ -3617,8 +3554,8 @@
         "g": "902e9a6537069b8d",
         "mydb": "5e560f07cfec117a",
         "name": "alert_events",
-        "x": 570,
-        "y": 1620,
+        "x": 590,
+        "y": 1540,
         "wires": [
             [
                 "d0bf4edd88a42aed"
@@ -3638,8 +3575,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 730,
-        "y": 1620,
+        "x": 750,
+        "y": 1540,
         "wires": [
             [
                 "154ee51f956aec0e"
@@ -3654,8 +3591,8 @@
         "name": "200 JSON",
         "statusCode": "",
         "headers": {},
-        "x": 890,
-        "y": 1620,
+        "x": 910,
+        "y": 1540,
         "wires": []
     },
     {
@@ -3671,8 +3608,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 410,
-        "y": 1620,
+        "x": 430,
+        "y": 1540,
         "wires": [
             [
                 "ec7212763482d9e7"
@@ -3686,8 +3623,8 @@
         "g": "902e9a6537069b8d",
         "name": "แสดงจำนวน Alert",
         "info": "",
-        "x": 180,
-        "y": 1580,
+        "x": 200,
+        "y": 1500,
         "wires": []
     },
     {
@@ -3695,7 +3632,7 @@
         "type": "function",
         "z": "640c6734fdac3595",
         "g": "c7e3510948f6624e",
-        "name": "Adapt Offline Status for Alert",
+        "name": "Device Status for Alert",
         "func": "// Function Node: (NEW) Adapt Offline Status for Alert\n// ทำหน้าที่แปลง msg จากระบบ Ping/MQTT check ให้อยู่ในรูปแบบที่ระบบ Alert เข้าใจได้\n\nconst p = msg.payload;\n// เอา event_id และ level จาก Flow context มาใช้\nconst states = flow.get('alert_states') || {};\nconst state = states[p.mac + '|device_status|connectivity'] || {};\n\n// 1. ตรวจสอบว่ามีข้อมูล mac และ status มาหรือไม่\nif (!p || !p.mac || !p.status) {\n    return null; // ถ้าไม่มีข้อมูลที่จำเป็น ก็ไม่ต้องทำอะไรต่อ\n}\n\n// 2. เราสนใจแค่ตอนที่สถานะเป็น 'offline'\n// ถ้า 'online' เราจะส่งค่า value = 1 เพื่อให้ระบบใช้ในการ Recovery (ปิด Alert)\nconst isOffline = (p.status.toLowerCase() === 'offline');\nconst alertValue = isOffline ? 0 : 1;\n\n// 3. สร้าง payload ใหม่ในรูปแบบที่ Function 'Check condition and insert' (ID: 676bd48cd34d868a) ต้องการ\nconst newPayload = {\n    mac: p.mac,\n    sensor_name: 'Device', // ชื่อเซ็นเซอร์เสมือนสำหรับสถานะอุปกรณ์\n    metric: 'connectivity',     // Metric ใหม่สำหรับ Alert ประเภทนี้\n    value: alertValue,          // 0 = offline, 1 = online\n    ts: new Date().toISOString()\n};\n\n// 4. ถ้าสถานะเป็น 'online' และมี event_id ของ alert ที่เปิดอยู่ ให้แนบ event_id นั้นไปกับ payload ด้วย\n// เพื่อให้ Alert Engine รู้ว่าต้องปิด alert ตัวไหน\nif (!isOffline && state.event_id) {\n    newPayload.event_id = state.event_id;\n    newPayload.level = state.level;\n    newPayload.status = state.status;\n}\n\nmsg.payload = newPayload;\nreturn msg;",
         "outputs": 1,
         "timeout": 0,
@@ -3703,8 +3640,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 640,
-        "y": 760,
+        "x": 420,
+        "y": 700,
         "wires": [
             [
                 "bab874a3ec5e3d7f"
@@ -3723,8 +3660,8 @@
         "once": false,
         "onceDelay": 0.1,
         "topic": "",
-        "x": 220,
-        "y": 1340,
+        "x": 240,
+        "y": 1260,
         "wires": [
             [
                 "0de9e2b71b06a40a"
@@ -3745,7 +3682,7 @@
         "finalize": "",
         "libs": [],
         "x": 440,
-        "y": 1340,
+        "y": 1260,
         "wires": [
             [
                 "95fa60aa68b20120"
@@ -3766,7 +3703,7 @@
         "finalize": "",
         "libs": [],
         "x": 780,
-        "y": 1340,
+        "y": 1260,
         "wires": [
             []
         ]
@@ -3779,7 +3716,7 @@
         "mydb": "5e560f07cfec117a",
         "name": "alert_events",
         "x": 610,
-        "y": 1340,
+        "y": 1260,
         "wires": [
             [
                 "a3fd0dbfc2793eb9"
@@ -3791,7 +3728,7 @@
         "type": "function",
         "z": "640c6734fdac3595",
         "g": "c7e3510948f6624e",
-        "name": "system summary",
+        "name": "System summary",
         "func": "// ✅ Function Node: System Summary (V2 - Includes temp_rise_per_room)\n\n// --- Contexts ---\nlet liveData = flow.get('liveRoomData') || {};\nlet historyData = flow.get('historyRoomData') || {};\nconst deviceMap = flow.get('device_map', 'file') || {};\n\nconst BASELINE_SPAN_MS = 300000;   // 5 นาที\nconst BASELINE_STALE_MS = 3600000;  // 60 นาที\n\n// --- MAC → RoomName map ---\nconst macToRoomInfo = {};\nfor (const key in deviceMap) {\n  if (!Object.prototype.hasOwnProperty.call(deviceMap, key)) continue;\n  if (key.startsWith('room')) {\n    const mac = deviceMap[key];\n    const idx = key.slice(-1).toUpperCase();\n    const nameKey = `name${idx}`;\n    const roomName = deviceMap[nameKey] || key;\n    if (mac) macToRoomInfo[mac] = { name: roomName };\n  }\n}\nfunction getRoomName(mac) {\n  return macToRoomInfo[mac] ? macToRoomInfo[mac].name : mac;\n}\n\n// --- Helpers ---\nfunction dewPointC(temp, rh) {\n  if (typeof temp !== 'number' || typeof rh !== 'number' || !isFinite(temp) || !isFinite(rh) || rh <= 0) return null;\n  const RH = Math.min(100, Math.max(0, rh));\n  const a = 17.62, b = 243.12;\n  const gamma = (a * temp) / (b + temp) + Math.log(RH / 100.0);\n  return (b * gamma) / (a - gamma);\n}\n\n// --- Input & Update liveData ---\nconst now = Date.now();\nconst mac = msg.payload.mac || msg.payload.mac_address || null;\nconst pin = msg.payload.pin;\n\nif (mac && pin === 'OVERALL') {\n  const roomName = getRoomName(mac);\n  if (roomName) {\n    const t_avg = Number(msg.payload.avg_temp);\n    const h_avg = Number(msg.payload.avg_hum);\n    const t_max = Number(msg.payload.max_temp);\n    const h_max = Number(msg.payload.max_hum);\n\n    liveData[mac] = {\n      mac,\n      name: roomName,\n      temp: isFinite(t_avg) ? t_avg : null,\n      hum: isFinite(h_avg) ? h_avg : null,\n      temp_max_device: isFinite(t_max) ? t_max : null,\n      hum_max_device: isFinite(h_max) ? h_max : null,\n      timestamp: now\n    };\n    flow.set('liveRoomData', liveData);\n  }\n}\n\n// --- Compute summary ---\nlet summary = {\n  temp_max: null, temp_max_room: null,\n  hum_max: null, hum_max_room: null,\n  dew_max: null, dew_max_room: null,\n  temp_rise_max: null, temp_rise_max_room: null,\n  temp_rise_per_room: {} // ✨ เพิ่ม key นี้เข้ามาใหม่\n};\n\nconst rooms = Object.values(liveData);\nif (rooms.length > 0) {\n  for (const room of rooms) {\n    if (!room || !room.mac) continue;\n    const curMac = room.mac;\n\n    const tempForMax = room.temp_max_device ?? room.temp;\n    if (typeof tempForMax === 'number' && (summary.temp_max === null || tempForMax > summary.temp_max)) {\n      summary.temp_max = tempForMax;\n      summary.temp_max_room = room.name;\n    }\n\n    const humForMax = room.hum_max_device ?? room.hum;\n    if (typeof humForMax === 'number' && (summary.hum_max === null || humForMax > summary.hum_max)) {\n      summary.hum_max = humForMax;\n      summary.hum_max_room = room.name;\n    }\n\n    const dp = dewPointC(room.temp, room.hum);\n    if (dp !== null && (summary.dew_max === null || dp > summary.dew_max)) {\n      summary.dew_max = dp;\n      summary.dew_max_room = room.name;\n    }\n\n    const base = historyData[curMac];\n    if (base && typeof base.temp === 'number' && typeof room.temp === 'number') {\n      const rise = room.temp - base.temp;\n      // ✨ เก็บค่า rise ของห้องนี้ไว้\n      summary.temp_rise_per_room[curMac] = rise;\n\n      if (summary.temp_rise_max === null || rise > summary.temp_rise_max) {\n        summary.temp_rise_max = rise;\n        summary.temp_rise_max_room = room.name;\n      }\n    }\n  }\n\n  if (summary.temp_rise_max === null) {\n    summary.temp_rise_max = 0;\n    summary.temp_rise_max_room = summary.temp_max_room;\n  }\n}\n\n// --- Refresh baselines & Persist ---\nObject.keys(liveData).forEach(m => {\n  const live = liveData[m];\n  const base = historyData[m];\n  if (!base || (live.timestamp - base.timestamp) >= BASELINE_SPAN_MS) {\n    historyData[m] = { ...live };\n  }\n});\nObject.keys(historyData).forEach(m => {\n  if (now - historyData[m].timestamp > BASELINE_STALE_MS) {\n    delete historyData[m];\n  }\n});\nflow.set('historyRoomData', historyData);\n\nmsg.payload = summary;\nmsg.topic = \"system_summary_pro\";\nreturn msg;",
         "outputs": 1,
         "timeout": 0,
@@ -3799,11 +3736,11 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 650,
-        "y": 880,
+        "x": 450,
+        "y": 800,
         "wires": [
             [
-                "9708f9c81584ae9a"
+                "62335ac41ba6e50a"
             ]
         ]
     },
@@ -3817,8 +3754,8 @@
         "method": "get",
         "upload": false,
         "swaggerDoc": "",
-        "x": 2720,
-        "y": 1320,
+        "x": 2980,
+        "y": 1620,
         "wires": [
             [
                 "82779c738ad44c4b"
@@ -3838,8 +3775,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 2950,
-        "y": 1320,
+        "x": 3210,
+        "y": 1620,
         "wires": [
             [
                 "258f6bf27fc6e1cf"
@@ -3853,8 +3790,8 @@
         "g": "37e675817144b486",
         "mydb": "5e560f07cfec117a",
         "name": "Query Sensors",
-        "x": 3180,
-        "y": 1320,
+        "x": 3440,
+        "y": 1620,
         "wires": [
             [
                 "57fe4cea096dc9a9"
@@ -3868,8 +3805,8 @@
         "g": "37e675817144b486",
         "mydb": "5e560f07cfec117a",
         "name": "Query Alerts",
-        "x": 2730,
-        "y": 1380,
+        "x": 2990,
+        "y": 1680,
         "wires": [
             [
                 "dc55c89f0ab0fef9"
@@ -3889,8 +3826,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 2900,
-        "y": 1380,
+        "x": 3160,
+        "y": 1680,
         "wires": [
             [
                 "f3110649b75fa1f6"
@@ -3920,8 +3857,8 @@
         "checkall": "false",
         "repair": false,
         "outputs": 2,
-        "x": 3080,
-        "y": 1380,
+        "x": 3340,
+        "y": 1680,
         "wires": [
             [
                 "3e79a8b6fddc2caf"
@@ -3942,8 +3879,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 3280,
-        "y": 1380,
+        "x": 3540,
+        "y": 1680,
         "wires": [
             [
                 "7f021b2b6bf737d9"
@@ -3958,8 +3895,8 @@
         "name": "File Response",
         "statusCode": "",
         "headers": {},
-        "x": 3700,
-        "y": 1380,
+        "x": 3960,
+        "y": 1680,
         "wires": []
     },
     {
@@ -3982,8 +3919,8 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 3500,
-        "y": 1380,
+        "x": 3760,
+        "y": 1680,
         "wires": [
             [
                 "a7081151ab3a2ad4"
@@ -4000,8 +3937,8 @@
         "method": "get",
         "upload": false,
         "swaggerDoc": "",
-        "x": 1790,
-        "y": 1000,
+        "x": 2050,
+        "y": 900,
         "wires": [
             [
                 "f253a7b1c4d4eb47"
@@ -4021,8 +3958,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 2000,
-        "y": 1000,
+        "x": 2260,
+        "y": 900,
         "wires": [
             [
                 "297a1b865a994b0b"
@@ -4036,8 +3973,8 @@
         "g": "48904a14f4cbefb3",
         "mydb": "5e560f07cfec117a",
         "name": "alert_events",
-        "x": 2170,
-        "y": 1000,
+        "x": 2430,
+        "y": 900,
         "wires": [
             [
                 "3981f0f3d29a470c"
@@ -4057,8 +3994,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 2310,
-        "y": 1000,
+        "x": 2570,
+        "y": 900,
         "wires": [
             [
                 "ee048f67cf4fa1d6"
@@ -4075,8 +4012,8 @@
         "headers": {
             "content-type": "application/json"
         },
-        "x": 2440,
-        "y": 1000,
+        "x": 2700,
+        "y": 900,
         "wires": []
     },
     {
@@ -4097,8 +4034,8 @@
         "checkall": "true",
         "repair": false,
         "outputs": 1,
-        "x": 1730,
-        "y": 960,
+        "x": 2030,
+        "y": 860,
         "wires": [
             [
                 "5d0f5e25fa5197c3"
@@ -4118,8 +4055,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 1900,
-        "y": 960,
+        "x": 2200,
+        "y": 860,
         "wires": [
             [
                 "6373aa23303841cf"
@@ -4133,8 +4070,8 @@
         "g": "48904a14f4cbefb3",
         "mydb": "5e560f07cfec117a",
         "name": "alert_events",
-        "x": 2090,
-        "y": 960,
+        "x": 2390,
+        "y": 860,
         "wires": [
             []
         ]
@@ -4146,8 +4083,8 @@
         "g": "48904a14f4cbefb3",
         "name": "Alert recovery จากระบบที่ผู้ใช้ไม่เห็น",
         "info": "",
-        "x": 1820,
-        "y": 920,
+        "x": 2080,
+        "y": 820,
         "wires": []
     },
     {
@@ -4162,8 +4099,8 @@
         "once": true,
         "onceDelay": 0.1,
         "topic": "",
-        "x": 1770,
-        "y": 1040,
+        "x": 2030,
+        "y": 940,
         "wires": [
             [
                 "734ded21c1daba8b"
@@ -4183,8 +4120,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 1960,
-        "y": 1040,
+        "x": 2220,
+        "y": 940,
         "wires": [
             [
                 "33ca16f0ac839ca5"
@@ -4198,8 +4135,8 @@
         "g": "37e675817144b486",
         "name": "สำหรับสร้าง Report CSV",
         "info": "",
-        "x": 2740,
-        "y": 1280,
+        "x": 3000,
+        "y": 1580,
         "wires": []
     },
     {
@@ -4209,8 +4146,8 @@
         "g": "48904a14f4cbefb3",
         "mydb": "5e560f07cfec117a",
         "name": "alert_events",
-        "x": 2170,
-        "y": 1040,
+        "x": 2430,
+        "y": 940,
         "wires": [
             []
         ]
@@ -4221,8 +4158,8 @@
         "z": "640c6734fdac3595",
         "g": "c7e3510948f6624e",
         "name": "",
-        "x": 910,
-        "y": 820,
+        "x": 890,
+        "y": 720,
         "wires": []
     },
     {
@@ -4230,7 +4167,7 @@
         "type": "function",
         "z": "640c6734fdac3595",
         "g": "c7e3510948f6624e",
-        "name": "Adapt Sensor Status for Alert",
+        "name": "Sensor Status for Alert",
         "func": "// Function Node: Adapt Sensor Status for Alert\n// รับข้อมูลสถานะของทุก Sensor แล้วส่งต่อไปให้ Alert Engine ทีละตัว\n\nconst sensorStatuses = msg.payload; // msg.payload เป็น Array [{mac, pin, status}, ...]\nif (!Array.isArray(sensorStatuses)) {\n    return null;\n}\n\nconst pinMap = global.get('mac_pin_names') || {};\n\n// วนลูปเพื่อสร้าง message สำหรับ Sensor แต่ละตัว\nsensorStatuses.forEach(sensor => {\n    const isOffline = (sensor.status.toUpperCase() === 'OFFLINE');\n    const alertValue = isOffline ? 0 : 1;\n\n    // ดึงชื่อที่ตั้งเองของ Sensor (ถ้ามี)\n    const devicePinMap = pinMap[sensor.mac] || {};\n    const sensorName = devicePinMap[`name_pin_${sensor.pin}`] || `Pin ${sensor.pin}`;\n\n    const newPayload = {\n        mac: sensor.mac,\n        sensor_name: sensorName, // ใช้ชื่อที่ตั้งเอง\n        metric: 'sensor_connectivity', // Metric ใหม่สำหรับ Alert ประเภทนี้\n        value: alertValue, // 0 = offline, 1 = online\n        ts: new Date().toISOString()\n    };\n\n    // ส่ง message ออกไปสำหรับ Sensor ตัวนี้\n    node.send({ payload: newPayload });\n});\n\n\n// ไม่ต้อง return อะไร เพราะเราใช้ node.send() ส่งออกไปหมดแล้ว\nreturn null;",
         "outputs": 1,
         "timeout": 0,
@@ -4238,8 +4175,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 640,
-        "y": 720,
+        "x": 420,
+        "y": 660,
         "wires": [
             [
                 "bab874a3ec5e3d7f"
@@ -4259,8 +4196,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 3380,
-        "y": 1320,
+        "x": 3640,
+        "y": 1620,
         "wires": [
             [
                 "417fa61902dccc67"
@@ -4277,8 +4214,8 @@
         "method": "get",
         "upload": false,
         "swaggerDoc": "",
-        "x": 1800,
-        "y": 1320,
+        "x": 2060,
+        "y": 1620,
         "wires": [
             [
                 "cd2adcf7949bf9e1"
@@ -4298,8 +4235,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 2050,
-        "y": 1320,
+        "x": 2310,
+        "y": 1620,
         "wires": [
             [
                 "7486317ab6c9b407"
@@ -4316,8 +4253,8 @@
         "headers": {
             "content-type": "application/json"
         },
-        "x": 2240,
-        "y": 1320,
+        "x": 2500,
+        "y": 1620,
         "wires": []
     },
     {
@@ -4330,8 +4267,8 @@
         "method": "post",
         "upload": false,
         "swaggerDoc": "",
-        "x": 1800,
-        "y": 1360,
+        "x": 2060,
+        "y": 1660,
         "wires": [
             [
                 "835b9d24889b4401"
@@ -4351,8 +4288,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 2060,
-        "y": 1360,
+        "x": 2320,
+        "y": 1660,
         "wires": [
             [
                 "037b2b044352cb94"
@@ -4379,8 +4316,8 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 2310,
-        "y": 1360,
+        "x": 2570,
+        "y": 1660,
         "wires": [
             [
                 "70048c0d3169c8aa",
@@ -4396,8 +4333,8 @@
         "name": "200 OK",
         "statusCode": "200",
         "headers": {},
-        "x": 2510,
-        "y": 1360,
+        "x": 2770,
+        "y": 1660,
         "wires": []
     },
     {
@@ -4407,8 +4344,8 @@
         "g": "98e9e0e68d946c03",
         "name": "สำหรับ Daily Report",
         "info": "",
-        "x": 1770,
-        "y": 1280,
+        "x": 2030,
+        "y": 1580,
         "wires": []
     },
     {
@@ -4424,8 +4361,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 1980,
-        "y": 1420,
+        "x": 2240,
+        "y": 1720,
         "wires": [
             [
                 "b06ddb5d8bc71c19"
@@ -4458,8 +4395,8 @@
         "topic": "",
         "payload": "",
         "payloadType": "date",
-        "x": 1770,
-        "y": 1420,
+        "x": 2030,
+        "y": 1720,
         "wires": [
             [
                 "55426d0f63020db5"
@@ -4480,8 +4417,8 @@
         "defaultLocationType": "default",
         "outputs": 2,
         "options": [],
-        "x": 2220,
-        "y": 1420,
+        "x": 2480,
+        "y": 1720,
         "wires": [
             [
                 "6b0b0398d197ace6"
@@ -4497,8 +4434,8 @@
         "z": "640c6734fdac3595",
         "g": "98e9e0e68d946c03",
         "name": "",
-        "x": 2430,
-        "y": 1420,
+        "x": 2690,
+        "y": 1720,
         "wires": []
     },
     {
@@ -4515,8 +4452,8 @@
         "rap": true,
         "rh": 0,
         "inputs": 0,
-        "x": 170,
-        "y": 500,
+        "x": 190,
+        "y": 460,
         "wires": [
             [
                 "fn-prepare-ping",
@@ -4537,8 +4474,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 360,
-        "y": 500,
+        "x": 390,
+        "y": 400,
         "wires": [
             [
                 "node-ping-dyn"
@@ -4556,8 +4493,8 @@
         "host": "",
         "timer": "10",
         "inputs": 1,
-        "x": 570,
-        "y": 500,
+        "x": 580,
+        "y": 360,
         "wires": [
             [
                 "fn-check-status"
@@ -4577,16 +4514,16 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 190,
-        "y": 560,
+        "x": 510,
+        "y": 460,
         "wires": [
             [
                 "switch-status",
-                "9708f9c81584ae9a",
-                "6889d15e433846c7"
+                "b248acd368a047f0",
+                "2305c4099135cc94"
             ],
             [
-                "84de7bd1374c55ed"
+                "af8f7ad43f68ed23"
             ]
         ]
     },
@@ -4613,8 +4550,8 @@
         "checkall": "true",
         "repair": false,
         "outputs": 2,
-        "x": 380,
-        "y": 560,
+        "x": 780,
+        "y": 440,
         "wires": [
             [
                 "fn-insert-db"
@@ -4637,8 +4574,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 570,
-        "y": 560,
+        "x": 950,
+        "y": 440,
         "wires": [
             [
                 "mysql-log"
@@ -4652,8 +4589,8 @@
         "g": "group-auto-ping",
         "mydb": "5e560f07cfec117a",
         "name": "esp_status_log",
-        "x": 740,
-        "y": 560,
+        "x": 1120,
+        "y": 440,
         "wires": [
             []
         ]
@@ -4675,8 +4612,8 @@
         "authType": "",
         "senderr": false,
         "headers": [],
-        "x": 310,
-        "y": 620,
+        "x": 930,
+        "y": 360,
         "wires": [
             [
                 "ac695710a3a0f1e3"
@@ -4695,8 +4632,8 @@
         "once": true,
         "onceDelay": "1",
         "topic": "",
-        "x": 170,
-        "y": 620,
+        "x": 790,
+        "y": 360,
         "wires": [
             [
                 "e341b45e963b3ef5"
@@ -4716,10 +4653,515 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 490,
-        "y": 620,
+        "x": 1110,
+        "y": 360,
         "wires": [
             []
+        ]
+    },
+    {
+        "id": "inject-ping-scheduler",
+        "type": "inject",
+        "z": "640c6734fdac3595",
+        "g": "group-auto-ping",
+        "name": "Ping Loop",
+        "props": [],
+        "repeat": "60",
+        "crontab": "",
+        "once": true,
+        "onceDelay": "2",
+        "topic": "",
+        "x": 210,
+        "y": 360,
+        "wires": [
+            [
+                "fn-ping-scheduler"
+            ]
+        ]
+    },
+    {
+        "id": "fn-ping-scheduler",
+        "type": "function",
+        "z": "640c6734fdac3595",
+        "g": "group-auto-ping",
+        "name": "Ping Scheduler",
+        "func": "let ip2mac = flow.get(\"ip2mac\") || {};\nlet msgs = [];\n\nfor (const ip in ip2mac) {\n    msgs.push({ payload: ip, host: ip });\n}\n\nreturn [msgs];",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 380,
+        "y": 360,
+        "wires": [
+            [
+                "node-ping-dyn"
+            ]
+        ]
+    },
+    {
+        "id": "13efb5e06ad934da",
+        "type": "link in",
+        "z": "640c6734fdac3595",
+        "name": "To Dashboard",
+        "links": [
+            "2bd4a9b70bf84131",
+            "3ccca56ce30903d7",
+            "62335ac41ba6e50a",
+            "64cd48591caf09c0",
+            "9dbbf45c90e6073e",
+            "9dd3a95f243b48ea",
+            "b248acd368a047f0",
+            "c8535339264f094e"
+        ],
+        "x": 1415,
+        "y": 680,
+        "wires": [
+            [
+                "9708f9c81584ae9a"
+            ]
+        ]
+    },
+    {
+        "id": "c8535339264f094e",
+        "type": "link out",
+        "z": "640c6734fdac3595",
+        "g": "ba826875d50440fd",
+        "name": "To Dashboard",
+        "mode": "link",
+        "links": [
+            "13efb5e06ad934da"
+        ],
+        "x": 485,
+        "y": 160,
+        "wires": []
+    },
+    {
+        "id": "9dd3a95f243b48ea",
+        "type": "link out",
+        "z": "640c6734fdac3595",
+        "g": "ba826875d50440fd",
+        "name": "To Dashboard(Sensor status)",
+        "mode": "link",
+        "links": [
+            "13efb5e06ad934da"
+        ],
+        "x": 865,
+        "y": 220,
+        "wires": []
+    },
+    {
+        "id": "b248acd368a047f0",
+        "type": "link out",
+        "z": "640c6734fdac3595",
+        "g": "group-auto-ping",
+        "name": "To Dashboard(Check status)",
+        "mode": "link",
+        "links": [
+            "13efb5e06ad934da"
+        ],
+        "x": 715,
+        "y": 400,
+        "wires": []
+    },
+    {
+        "id": "2bd4a9b70bf84131",
+        "type": "link out",
+        "z": "640c6734fdac3595",
+        "g": "bf24f1109e557024",
+        "name": "To Dashboard(Reply action reboot)",
+        "mode": "link",
+        "links": [
+            "13efb5e06ad934da"
+        ],
+        "x": 1295,
+        "y": 260,
+        "wires": []
+    },
+    {
+        "id": "9dbbf45c90e6073e",
+        "type": "link out",
+        "z": "640c6734fdac3595",
+        "g": "bf24f1109e557024",
+        "name": "To Dashboard(Command reboot)",
+        "mode": "link",
+        "links": [
+            "13efb5e06ad934da"
+        ],
+        "x": 1235,
+        "y": 180,
+        "wires": []
+    },
+    {
+        "id": "3ccca56ce30903d7",
+        "type": "link out",
+        "z": "640c6734fdac3595",
+        "g": "04363f3d44ea50b0",
+        "name": "To Dashboard(Put request id)",
+        "mode": "link",
+        "links": [
+            "13efb5e06ad934da"
+        ],
+        "x": 1825,
+        "y": 180,
+        "wires": []
+    },
+    {
+        "id": "62335ac41ba6e50a",
+        "type": "link out",
+        "z": "640c6734fdac3595",
+        "g": "c7e3510948f6624e",
+        "name": "To Dashboard(System summary)",
+        "mode": "link",
+        "links": [
+            "13efb5e06ad934da"
+        ],
+        "x": 575,
+        "y": 800,
+        "wires": []
+    },
+    {
+        "id": "64cd48591caf09c0",
+        "type": "link out",
+        "z": "640c6734fdac3595",
+        "g": "c7e3510948f6624e",
+        "name": "To Dashboard(Toast Alert)",
+        "mode": "link",
+        "links": [
+            "13efb5e06ad934da"
+        ],
+        "x": 965,
+        "y": 760,
+        "wires": []
+    },
+    {
+        "id": "cad07b2b3eea95a9",
+        "type": "link out",
+        "z": "640c6734fdac3595",
+        "name": "To Request id",
+        "mode": "link",
+        "links": [
+            "a5c1e87646cfa1b3"
+        ],
+        "x": 1665,
+        "y": 640,
+        "wires": []
+    },
+    {
+        "id": "a5c1e87646cfa1b3",
+        "type": "link in",
+        "z": "640c6734fdac3595",
+        "g": "04363f3d44ea50b0",
+        "name": "To Request id",
+        "links": [
+            "cad07b2b3eea95a9"
+        ],
+        "x": 1505,
+        "y": 120,
+        "wires": [
+            [
+                "c46318095bd096a9"
+            ]
+        ]
+    },
+    {
+        "id": "164d2e7018120437",
+        "type": "link out",
+        "z": "640c6734fdac3595",
+        "name": "To Node(Alert Recovery)",
+        "mode": "link",
+        "links": [
+            "2d29e4bdbb212815"
+        ],
+        "x": 1665,
+        "y": 720,
+        "wires": []
+    },
+    {
+        "id": "2d29e4bdbb212815",
+        "type": "link in",
+        "z": "640c6734fdac3595",
+        "g": "48904a14f4cbefb3",
+        "name": "link in 1",
+        "links": [
+            "164d2e7018120437"
+        ],
+        "x": 1955,
+        "y": 860,
+        "wires": [
+            [
+                "b8274aa11208401e"
+            ]
+        ]
+    },
+    {
+        "id": "af8f7ad43f68ed23",
+        "type": "link out",
+        "z": "640c6734fdac3595",
+        "g": "group-auto-ping",
+        "name": "To node(Send topic)",
+        "mode": "link",
+        "links": [
+            "faef73a25c6f6561"
+        ],
+        "x": 715,
+        "y": 520,
+        "wires": []
+    },
+    {
+        "id": "faef73a25c6f6561",
+        "type": "link in",
+        "z": "640c6734fdac3595",
+        "g": "d314b1ded220aada",
+        "name": "link in 2",
+        "links": [
+            "af8f7ad43f68ed23"
+        ],
+        "x": 2135,
+        "y": 120,
+        "wires": [
+            [
+                "84de7bd1374c55ed"
+            ]
+        ]
+    },
+    {
+        "id": "b6e1d5d135cbbd65",
+        "type": "link out",
+        "z": "640c6734fdac3595",
+        "g": "ba826875d50440fd",
+        "name": "To node(Sensor Status for Alert)",
+        "mode": "link",
+        "links": [
+            "c829bb366e68e647"
+        ],
+        "x": 865,
+        "y": 260,
+        "wires": []
+    },
+    {
+        "id": "c829bb366e68e647",
+        "type": "link in",
+        "z": "640c6734fdac3595",
+        "g": "c7e3510948f6624e",
+        "name": "link in 3",
+        "links": [
+            "b6e1d5d135cbbd65"
+        ],
+        "x": 285,
+        "y": 660,
+        "wires": [
+            [
+                "4557dd1bb41b4158"
+            ]
+        ]
+    },
+    {
+        "id": "2305c4099135cc94",
+        "type": "link out",
+        "z": "640c6734fdac3595",
+        "g": "group-auto-ping",
+        "name": "To node(Device status for Alert)",
+        "mode": "link",
+        "links": [
+            "e634590e551137c4"
+        ],
+        "x": 715,
+        "y": 480,
+        "wires": []
+    },
+    {
+        "id": "e634590e551137c4",
+        "type": "link in",
+        "z": "640c6734fdac3595",
+        "g": "c7e3510948f6624e",
+        "name": "link in 4",
+        "links": [
+            "2305c4099135cc94"
+        ],
+        "x": 275,
+        "y": 700,
+        "wires": [
+            [
+                "6889d15e433846c7"
+            ]
+        ]
+    },
+    {
+        "id": "f67d6f62f7b2e4e0",
+        "type": "link out",
+        "z": "640c6734fdac3595",
+        "g": "63f59a4d8f7d47e7",
+        "name": "To node(Query rules)",
+        "mode": "link",
+        "links": [
+            "41ae12f967d3101e"
+        ],
+        "x": 2335,
+        "y": 720,
+        "wires": []
+    },
+    {
+        "id": "18b28f96f1b41483",
+        "type": "link out",
+        "z": "640c6734fdac3595",
+        "g": "04363f3d44ea50b0",
+        "name": "To node(Command reoot)",
+        "mode": "link",
+        "links": [
+            "b783d99212b2714a"
+        ],
+        "x": 1825,
+        "y": 100,
+        "wires": []
+    },
+    {
+        "id": "b783d99212b2714a",
+        "type": "link in",
+        "z": "640c6734fdac3595",
+        "g": "bf24f1109e557024",
+        "name": "link in 6",
+        "links": [
+            "18b28f96f1b41483"
+        ],
+        "x": 965,
+        "y": 160,
+        "wires": [
+            [
+                "8527f967384360ec"
+            ]
+        ]
+    },
+    {
+        "id": "dfa92c6ca3e394f6",
+        "type": "link out",
+        "z": "640c6734fdac3595",
+        "g": "04363f3d44ea50b0",
+        "name": "To node(Check command)",
+        "mode": "link",
+        "links": [
+            "6e9fe1efdf55fb5c"
+        ],
+        "x": 1825,
+        "y": 140,
+        "wires": []
+    },
+    {
+        "id": "6e9fe1efdf55fb5c",
+        "type": "link in",
+        "z": "640c6734fdac3595",
+        "g": "d314b1ded220aada",
+        "name": "link in 7",
+        "links": [
+            "dfa92c6ca3e394f6"
+        ],
+        "x": 1945,
+        "y": 160,
+        "wires": [
+            [
+                "61401c21d911973d"
+            ]
+        ]
+    },
+    {
+        "id": "e5287d092bd432ea",
+        "type": "inject",
+        "z": "640c6734fdac3595",
+        "g": "3dd353a896e35cd3",
+        "name": "Load Rules every 1 mins",
+        "props": [],
+        "repeat": "2",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "",
+        "x": 2710,
+        "y": 640,
+        "wires": [
+            [
+                "d2db7bec5131a6cf"
+            ]
+        ]
+    },
+    {
+        "id": "d21531b83e0203e0",
+        "type": "mysql",
+        "z": "640c6734fdac3595",
+        "g": "3dd353a896e35cd3",
+        "mydb": "5e560f07cfec117a",
+        "name": "alert_rules",
+        "x": 2670,
+        "y": 700,
+        "wires": [
+            [
+                "66a23818b29b5dbc"
+            ]
+        ]
+    },
+    {
+        "id": "66a23818b29b5dbc",
+        "type": "function",
+        "z": "640c6734fdac3595",
+        "g": "3dd353a896e35cd3",
+        "name": "Rule loader",
+        "func": "// Function: load_rules_to_global (FIXED to include sensor_connectivity)\nconst rules = msg.payload;\nconst deviceMap = flow.get('device_map', 'file') || {};\n\n// ค้นหากฎของระบบ (system-level rules) ทั้งหมดที่เรามี\nconst systemTempRule = rules.find(r => r.scope === 'system' && r.metric === 'temp' && r.active) || {};\nconst systemHumRule = rules.find(r => r.scope === 'system' && r.metric === 'hum' && r.active) || {};\nconst systemConnRule = rules.find(r => r.scope === 'system' && r.metric === 'connectivity' && r.active) || {};\n// --- ✨ เพิ่มบรรทัดนี้เข้ามา ✨ ---\nconst systemSensorConnRule = rules.find(r => r.scope === 'system' && r.metric === 'sensor_connectivity' && r.active) || {};\n// --- ✨ สิ้นสุดส่วนที่เพิ่ม ✨ ---\n\nconst roomRules = rules.filter(r => r.scope === 'room' && r.active);\nconst sensorRules = rules.filter(r => r.scope === 'sensor' && r.active);\n\nconst effectiveMap = {};\n\nconst inherit = (specific, room, system) => {\n    const origins = {};\n    const merged = {};\n    const allKeys = new Set([...Object.keys(system), ...Object.keys(room), ...Object.keys(specific)]);\n\n    for (const key of allKeys) {\n        if (specific && specific[key] !== null && specific[key] !== undefined) {\n            merged[key] = specific[key];\n            origins[key] = 'sensor';\n        } else if (room && room[key] !== null && room[key] !== undefined) {\n            merged[key] = room[key];\n            origins[key] = 'room';\n        } else if (system && system[key] !== null && system[key] !== undefined) {\n            merged[key] = system[key];\n            origins[key] = 'system';\n        }\n    }\n    merged.origins = origins;\n    return merged;\n};\n\nconst allMacs = Object.values(deviceMap).filter(val => typeof val === 'string' && val.includes(':'));\n\nfor (const mac of allMacs) {\n    const sensorsForDevice = sensorRules.filter(r => r.mac === mac);\n\n    const roomTempRule = roomRules.find(r => r.mac === mac && r.metric === 'temp') || {};\n    const roomHumRule = roomRules.find(r => r.mac === mac && r.metric === 'hum') || {};\n\n    const overallTempKey = `${mac}|overall|temp`;\n    effectiveMap[overallTempKey] = inherit({}, roomTempRule, systemTempRule);\n\n    const overallHumKey = `${mac}|overall|hum`;\n    effectiveMap[overallHumKey] = inherit({}, roomHumRule, systemHumRule);\n\n    for (const sensorRule of sensorsForDevice) {\n        const key = `${mac}|${sensorRule.sensor_name}|${sensorRule.metric}`;\n        if (sensorRule.metric === 'temp') {\n            effectiveMap[key] = inherit(sensorRule, roomTempRule, systemTempRule);\n        } else if (sensorRule.metric === 'hum') {\n            effectiveMap[key] = inherit(sensorRule, roomHumRule, systemHumRule);\n        }\n    }\n}\n\neffectiveMap['system_temp'] = systemTempRule;\neffectiveMap['system_hum'] = systemHumRule;\neffectiveMap['system_connectivity'] = systemConnRule;\n// --- ✨ เพิ่มบรรทัดนี้เข้ามา ✨ ---\neffectiveMap['system_sensor_connectivity'] = systemSensorConnRule; \n// --- ✨ สิ้นสุดส่วนที่เพิ่ม ✨ ---\n\nglobal.set('effectiveRuleMap', effectiveMap);\nnode.status({ fill: 'green', shape: 'dot', text: `Loaded ${Object.keys(effectiveMap).length} effective rules` });\n\nreturn null;",
+        "outputs": 0,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 2910,
+        "y": 700,
+        "wires": []
+    },
+    {
+        "id": "d2db7bec5131a6cf",
+        "type": "function",
+        "z": "640c6734fdac3595",
+        "g": "3dd353a896e35cd3",
+        "name": "Query rule",
+        "func": "// โค้ดสำหรับโหนด Function: Build SQL for Rules\nmsg.topic = \"SELECT * FROM alert_rules WHERE active = 1 ORDER BY scope DESC\";\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 2950,
+        "y": 640,
+        "wires": [
+            [
+                "d21531b83e0203e0"
+            ]
+        ]
+    },
+    {
+        "id": "15d1d79aeec5b369",
+        "type": "comment",
+        "z": "640c6734fdac3595",
+        "g": "3dd353a896e35cd3",
+        "name": "อัพเดทเงื่อนไขในการใช้กับ Alert",
+        "info": "",
+        "x": 2700,
+        "y": 600,
+        "wires": []
+    },
+    {
+        "id": "41ae12f967d3101e",
+        "type": "link in",
+        "z": "640c6734fdac3595",
+        "g": "3dd353a896e35cd3",
+        "name": "link in 8",
+        "links": [
+            "f67d6f62f7b2e4e0"
+        ],
+        "x": 2865,
+        "y": 600,
+        "wires": [
+            [
+                "d2db7bec5131a6cf"
+            ]
         ]
     },
     {
@@ -4742,53 +5184,14 @@
         "title": "",
         "descr": "",
         "editurl": "vscode://file\\Users\\PCSGH\\.node-red\\uibuilder/dashboard/?windowId=_blank",
-        "x": 1330,
+        "x": 1550,
         "y": 680,
         "wires": [
             [
-                "c46318095bd096a9",
-                "b8274aa11208401e"
+                "cad07b2b3eea95a9"
             ],
-            []
-        ]
-    },
-    {
-        "id": "inject-ping-scheduler",
-        "type": "inject",
-        "z": "640c6734fdac3595",
-        "g": "group-auto-ping",
-        "name": "Ping Loop",
-        "props": [],
-        "repeat": "60",
-        "crontab": "",
-        "once": true,
-        "onceDelay": "2",
-        "topic": "",
-        "x": 190,
-        "y": 460,
-        "wires": [
             [
-                "fn-ping-scheduler"
-            ]
-        ]
-    },
-    {
-        "id": "fn-ping-scheduler",
-        "type": "function",
-        "z": "640c6734fdac3595",
-        "g": "group-auto-ping",
-        "name": "Ping Scheduler",
-        "func": "let ip2mac = flow.get(\"ip2mac\") || {};\nlet msgs = [];\n\nfor (const ip in ip2mac) {\n    msgs.push({ payload: ip, host: ip });\n}\n\nreturn [msgs];",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 380,
-        "y": 460,
-        "wires": [
-            [
-                "node-ping-dyn"
+                "164d2e7018120437"
             ]
         ]
     },
