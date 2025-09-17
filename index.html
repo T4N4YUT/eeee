@@ -1982,6 +1982,7 @@
         #modal-alert-center .config-select {
             height: 50px;
         }
+        
     </style>
 </head>
 
@@ -2104,7 +2105,7 @@
                         <div id="qa-alert-card"
                             class="bg-[var(--panel)] p-4 rounded-xl border border-[var(--border)] cursor-pointer">
                             <div class="flex items-center justify-between mb-3">
-                                <h4 class="text-lg font-semibold">🔔 Alerts</h4>
+                                <h4 class="text-lg font-semibold">🔔 Alert Center</h4>
                             </div>
                             <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-3">
                                 <div id="card-critical"
@@ -2437,7 +2438,7 @@
                     </form>
                 </div>
                 <div class="config-footer flex justify-end">
-                    <button id="btn-confirm-ack" class="btn btn-primary"><i
+                    <button id="btn-confirm-ack" class="btn btn-confirm"><i
                             class="fa-solid fa-check mr-2"></i>Confirm</button>
                 </div>
             </div>
@@ -2475,7 +2476,7 @@
                                 class="text-sm font-medium text-slate-400 mb-1 block">Status</label>
                             <select id="alert-filter-status" class="config-select">
                                 <option value="open,ack">Active(Open/ACK)</option>
-                                <option value="recovery" style="display: none">Recovery(History)</option>
+                                <option value="recovery" hidden>Recovery(History)</option>
                                 <option value="closed">Closed(History)</option>
                             </select>
                         </div>
@@ -3023,6 +3024,30 @@
                 </section>
                 <section>
                     <h6 class="font-semibold text-base mb-3 text-slate-300">
+                        <i class="fa-solid fa-clock-rotate-left w-5 mr-1 text-purple-400"></i>Alert Re-notifications
+                    </h6>
+                    <div class="p-3 bg-[var(--panel-2)] rounded-lg border border-[var(--border)] space-y-2">
+                        <p class="text-sm text-[var(--muted)] pb-2">
+                            Repeat Alert Interval (min) — set 0 to disable
+                        </p>
+                        <div class="grid grid-cols-2 gap-4">
+                            <label class="config-label">
+                                <span class="icon text-yellow-400"><i
+                                        class="fa-solid fa-triangle-exclamation"></i></span> Warning(minutes)
+                                <input id="renotify-warn-min" type="number" step="1" min="0" class="config-input mt-1"
+                                    placeholder="e.g., 60">
+                            </label>
+                            <label class="config-label">
+                                <span class="icon text-red-400"><i class="fa-solid fa-triangle-exclamation"></i></span>
+                                Critical(minutes)
+                                <input id="renotify-crit-min" type="number" step="1" min="0" class="config-input mt-1"
+                                    placeholder="e.g., 15">
+                            </label>
+                        </div>
+                    </div>
+                </section>
+                <section>
+                    <h6 class="font-semibold text-base mb-3 text-slate-300">
                         <i class="fa-solid fa-calendar-day w-5 mr-1 text-amber-400"></i>Daily Report Notifications
                     </h6>
                     <div class="space-y-4">
@@ -3300,7 +3325,6 @@
                     if (!who && note) return `<strong>ACKed:</strong> ${acked} (note: "${note}")`;
                     return `<strong>ACKed:</strong> ${acked}`;
                 })();
-
                 let lines = [`<div><strong>Opened:</strong> ${opened}</div>`];
                 if (currentTab.includes('ack') || currentTab.includes('closed') || currentTab.includes('recovery')) {
                     lines.push(`<div>${ackLine}</div>`);
@@ -3498,6 +3522,42 @@
                 el.style.left = `${rect.left + window.pageXOffset + tooltip.caretX}px`;
                 el.style.top = `${rect.top + window.pageYOffset + tooltip.caretY}px`;
                 el.style.opacity = 1;
+            }
+            async function loadChartDataInChunks(startISO, endISO, mac) {
+                const startDate = new Date(startISO);
+                const endDate = new Date(endISO);
+                const CHUNK_SIZE_DAYS = 2;
+                feedChartsFromRows([], false);
+                let currentStart = new Date(startDate);
+                showPopup('Loading chart data...', { type: 'info', timeout: 60000 });
+                while (currentStart < endDate) {
+                    let currentEnd = new Date(currentStart);
+                    currentEnd.setDate(currentEnd.getDate() + CHUNK_SIZE_DAYS);
+                    if (currentEnd > endDate) {
+                        currentEnd = new Date(endDate);
+                    }
+                    const startChunkISO = currentStart.toISOString();
+                    const endChunkISO = currentEnd.toISOString();
+                    console.log(`Fetching chunk: ${startChunkISO} to ${endChunkISO}`);
+                    try {
+                        const res = await fetch(`/api/data?start=${startChunkISO}&end=${endChunkISO}&mac=${mac}`);
+                        if (!res.ok) {
+                            console.error(`Failed to fetch chunk: ${res.status}`);
+                            continue;
+                        }
+                        const chunkData = await res.json();
+                        if (chunkData && chunkData.length > 0) {
+                            window.chartApiData = window.chartApiData.concat(chunkData);
+                            feedChartsFromRows(window.chartApiData, false);
+                        }
+                        await new Promise(resolve => setTimeout(resolve, 50));
+                    } catch (err) {
+                        console.error('Error fetching a chunk:', err);
+                    }
+                    currentStart = new Date(currentEnd);
+                }
+                document.querySelector('#toast-container')?.remove();
+                showPopup('Chart data loaded successfully!', { type: 'success' });
             }
             async function fetchAndRenderUptimeChart(roomId, targetCanvasId, targetPctId) {
                 const mac = window.ROOM_TO_MAC_MAP?.[roomId];
@@ -4200,6 +4260,15 @@
                     showPopup(`Configuration saved successfully!`, { type: 'success' });
                     closeModal('modal-settings');
                     lockSettingsForm();
+                    if (window.liveAlertSettings) {
+                        window.liveAlertSettings[room] = settings.alerts;
+                        console.log(`[UI Refresh] Updated liveAlertSettings for ${room}`, window.liveAlertSettings[room]);
+                    }
+                    const latestData = window.roomDataStore[room]?.live?.OVERALL;
+                    if (latestData) {
+                        updateRoomUI(room, latestData);
+                        console.log(`[UI Refresh] Forcing UI update for ${room} card.`);
+                    }
                 } catch (error) {
                     console.error("Failed to save settings:", error);
                     showPopup(`Failed to save configuration: ${error.message}`, { type: 'fail' });
@@ -4508,12 +4577,12 @@
                         return '';
                     }
                     if (alert.trigger_value > thresholds.warnHigh) {
-                        return 'High';
+                        return '';
                     }
                     if (alert.trigger_value < thresholds.warnLow) {
-                        return 'Low';
+                        return '';
                     }
-                    return 'Critical';
+                    return '';
                 };
                 listEl.innerHTML = '';
                 if (!alerts || alerts.length === 0) {
@@ -5046,20 +5115,22 @@
                 const rhValEl = document.getElementById(`rh-${roomId}`);
                 const tempCard = tempValEl?.closest('.metric-card');
                 const rhCard = rhValEl?.closest('.metric-card');
-                const hasData =
-                    (data.avg_temp != null && !isNaN(data.avg_temp)) ||
-                    (data.avg_hum != null && !isNaN(data.avg_hum)) ||
-                    (data.uptime_pct != null);
+
+                const hasData = (data.avg_temp != null && !isNaN(data.avg_temp)) || (data.avg_hum != null && !isNaN(data.avg_hum));
+
                 if (data.status === 'offline' || !hasData) {
                     resetRoomUI(roomId);
                     return;
                 }
+
                 if (statusDot) {
                     setLed(statusDot, 'led--green');
                 }
                 checkAndFetchConfig(roomId);
+
                 const hiddenMetricCards = roomCardEl.querySelectorAll('.metric-card.hidden');
                 hiddenMetricCards.forEach(c => c.classList.remove('hidden'));
+
                 if (data.timestamp != null && updatedEl) {
                     const d = new Date(data.timestamp);
                     updatedEl.textContent = d.toLocaleString('en-GB', {
@@ -5067,35 +5138,48 @@
                         hour: '2-digit', minute: '2-digit'
                     });
                 }
+
+                const allColorClasses = [
+                    'from-green-400', 'to-green-500', 'from-blue-400', 'to-blue-500',
+                    'from-orange-400', 'to-orange-500', 'from-red-500', 'to-red-600',
+                    'from-slate-500', 'to-slate-600'
+                ];
+
                 if (data.avg_temp != null && !isNaN(data.avg_temp) && tempValEl && tempCard) {
                     const tStyles = getSensorStyles(data.avg_temp, 'temp', roomId);
                     const startValue = parseFloat(tempValEl.textContent) || data.avg_temp;
-                    const endValue = Number(data.avg_temp);
-                    animateValue(tempValEl, startValue, endValue, 500, '°C');
+                    animateValue(tempValEl, startValue, Number(data.avg_temp), 500, '°C');
+
                     const sEl = tempCard.querySelector('p.metric-status');
                     if (sEl) sEl.textContent = tStyles.status;
-                    tempCard.className = 'metric-card rounded-xl shadow p-4 text-white text-center flex flex-col justify-center';
-                    tempCard.classList.add('bg-gradient-to-r', ...tStyles.classes);
+
+                    tempCard.classList.remove(...allColorClasses);
+                    tempCard.classList.add(...tStyles.classes);
+
                     tempCard.classList.remove('flash-update');
                     void tempCard.offsetWidth;
                     tempCard.classList.add('flash-update');
                     setTimeout(() => tempCard.classList.remove('flash-update'), 700);
                 }
+
                 if (data.avg_hum != null && !isNaN(data.avg_hum) && rhValEl && rhCard) {
                     const hStyles = getSensorStyles(data.avg_hum, 'hum', roomId);
                     const startValue = parseFloat(rhValEl.textContent) || data.avg_hum;
-                    const endValue = Number(data.avg_hum);
-                    animateValue(rhValEl, startValue, endValue, 500, '%');
+                    animateValue(rhValEl, startValue, Number(data.avg_hum), 500, '%');
+
                     const sEl = rhCard.querySelector('p.metric-status');
                     if (sEl) sEl.textContent = hStyles.status;
-                    rhCard.className = 'metric-card rounded-xl shadow p-4 text-white text-center flex flex-col justify-center';
-                    rhCard.classList.add('bg-gradient-to-r', ...hStyles.classes);
+
+                    rhCard.classList.remove(...allColorClasses);
+                    rhCard.classList.add(...hStyles.classes);
+
                     rhCard.classList.remove('flash-update');
                     void rhCard.offsetWidth;
                     rhCard.classList.add('flash-update');
                     setTimeout(() => rhCard.classList.remove('flash-update'), 700);
                 }
             }
+
             function resetAllRoomStatuses() {
                 console.log('[SYSTEM] All room statuses have been reset due to a device map change.');
                 const rooms = ['room-a', 'room-b', 'room-c', 'room-d'];
@@ -5242,6 +5326,9 @@
                         scheduleWeekdays = [true, true, true, true, true, true, true];
                         scheduleConfigs = [{ sendAt: "08:00", rangeStart: "17:00", rangeEnd: "08:00" }];
                     }
+                    const renotify = data.renotify || {};
+                    document.getElementById('renotify-warn-min').value = renotify.warn_min || 60;
+                    document.getElementById('renotify-crit-min').value = renotify.crit_min || 15;
                 } catch (err) {
                     console.warn('[Notifications] Could not load settings, using defaults:', err);
                     notificationEmails.length = 0;
@@ -5265,9 +5352,14 @@
                 if (!confirmed) return;
                 const statusEl = document.getElementById('recipients-status');
                 statusEl.textContent = 'Saving...';
+                const renotifySettings = {
+                    warn_min: parseInt(document.getElementById('renotify-warn-min').value, 10) || 0,
+                    crit_min: parseInt(document.getElementById('renotify-crit-min').value, 10) || 0
+                };
                 const payload = {
                     recipients: { email: notificationEmails, telegram: telegramChatIds },
-                    schedule: { weekdays: scheduleWeekdays, configs: scheduleConfigs }
+                    schedule: { weekdays: scheduleWeekdays, configs: scheduleConfigs },
+                    renotify: renotifySettings
                 };
                 try {
                     const res = await fetch('/api/notification-settings', {
@@ -5574,45 +5666,26 @@
                 if (!handler) return;
                 handler(msg);
             }
+
             async function fetchAndRenderRange() {
                 const detailRoomNameEl = document.getElementById('detail-room-name');
                 const roomId = detailRoomNameEl?.dataset.currentRoom;
-                if (!roomId) {
-                    console.error("fetchAndRenderRange: ไม่สามารถหา roomId ได้");
-                    return;
-                }
+                if (!roomId) return;
+
                 const roomToMac = Object.fromEntries(
                     Object.entries(window.MAC_TO_ROOM_MAP || {}).map(([mac, rid]) => [rid, mac])
                 );
                 const mac = roomToMac[roomId];
                 if (!mac) {
-                    showPopup(`MAC address for ${roomId} not found in Device Map`, { type: 'fail' });
-                    console.error(`fetchAndRenderRange: ไม่มี MAC Address สำหรับห้อง ${roomId}`);
+                    showPopup(`MAC address for ${roomId} not found`, { type: 'fail' });
                     return;
                 }
+
                 const { fromISO, toISO } = getCurrentRangeISO();
-                if (!fromISO || !toISO) {
-                    console.error("fetchAndRenderRange: ไม่สามารถหาช่วงเวลาได้");
-                    return;
-                }
-                try {
-                    const res = await fetch(`/api/data?start=${fromISO}&end=${toISO}&mac=${mac}`);
-                    if (!res.ok) {
-                        throw new Error(`Server responded with status ${res.status}`);
-                    }
-                    const data = await res.json();
-                    window.chartApiData = data;
-                    if (data && data.length > 0) {
-                        feedChartsFromRows(data, true);
-                    } else {
-                        window.chartApiData = [];
-                        console.log(`ไม่มีข้อมูลสำหรับช่วงเวลานี้ของห้อง ${roomId}`);
-                        feedChartsFromRows([], true);
-                    }
-                } catch (err) {
-                    showPopup(`Failed to load chart data: ${err.message}`, { type: 'fail', timeout: 5000 });
-                    console.error("Fetch data failed:", err);
-                }
+                if (!fromISO || !toISO) return;
+
+                window.chartApiData = [];
+                await loadChartDataInChunks(fromISO, toISO, mac);
             }
             async function sendAction(cmd, payload = {}, roomName = '') {
                 if (typeof uibuilder === 'undefined') {
@@ -6139,7 +6212,6 @@
                 const roomName = roomId === 'all' ? 'All Devices' : (window.ROOM_NAMES?.[roomId] || roomId);
                 const safeClose = () => { try { closeModal('modal-reboot'); } catch { } };
                 const roomToMac = window.ROOM_TO_MAC_MAP || {};
-
                 if (roomId === 'all') {
                     const allPotentialRooms = ['room-a', 'room-b', 'room-c', 'room-d'];
                     const roomsToReboot = allPotentialRooms.filter(rId => {
@@ -6148,12 +6220,10 @@
                         const isOnline = statusDot && statusDot.classList.contains('led--green');
                         return mac && isOnline;
                     });
-
                     if (roomsToReboot.length === 0) {
                         showPopup('No online devices to reboot.', { type: 'fail' });
                         return;
                     }
-
                     const confirmed = await showConfirmationModal(
                         'Confirm Reboot All',
                         `This will send a reboot command to <strong>${roomsToReboot.length} online device(s)</strong>. Are you sure?`, {
@@ -6164,7 +6234,6 @@
                     }
                     );
                     if (!confirmed) return;
-
                     safeClose();
                     const success = await sendAction('Reboot', { room_id: 'all', mac: 'all' }, 'All Devices');
                     if (success) {
@@ -6173,7 +6242,6 @@
                             resetRoomUI(rId);
                         });
                     }
-
                 } else {
                     const mac = normalizeMAC(roomToMac[roomId] || '');
                     if (!mac) {
@@ -6196,7 +6264,6 @@
                     }
                     );
                     if (!confirmed) return;
-
                     safeClose();
                     const success = await sendAction('Reboot', { room_id: roomId, mac }, roomName);
                     if (success) {
@@ -6803,11 +6870,11 @@
                 isFetchingAlerts = true;
                 alertTableBodyEl.innerHTML = '<tr><td colspan="11" class="p-8 text-center text-[var(--muted)]"><i class="fa-solid fa-spinner fa-spin mr-2"></i>Loading alerts...</td></tr>';
                 const status = statusSelect.value || 'open,ack';
-                const isClosedTab = status.includes('closed');
-                toggleDateInputs(!isClosedTab);
+                const canUseCalendar = status.includes('closed') || status.includes('recovery');
+                toggleDateInputs(!canUseCalendar);
                 let start = '';
                 let end = '';
-                if (isClosedTab) {
+                if (canUseCalendar) {
                     start = startDateInput.value ? new Date(startDateInput.value).toISOString() : '';
                     end = endDateInput.value ? new Date(endDateInput.value).toISOString() : '';
                 }
@@ -7083,7 +7150,7 @@
                     resetFilters();
                     startDateInput.value = '';
                     endDateInput.value = '';
-                    tatusSelect.value = 'closed,recovery';
+                    statusSelect.value = 'recovery';
                     loadAndCacheAlerts();
                 }
             });
@@ -7132,20 +7199,36 @@
                     openAckModal(selectedIds);
                 }
             });
-            function handleAlertCardClick(levelFilter = '') {
+            async function handleAlertCardClick(levelFilter = '') {
                 openModal('modal-alert-center');
                 resetFilters();
                 const statusSelect = document.getElementById('alert-filter-status');
                 const levelSelect = document.getElementById('alert-filter-level');
-                if (unseenRecoveryIds.size > 0) {
-                    statusSelect.value = 'closed';
-                    const startDateInput = document.getElementById('alert-filter-start-date');
-                    const endDateInput = document.getElementById('alert-filter-end-date');
-                    if (startDateInput) startDateInput.value = '';
-                    if (endDateInput) endDateInput.value = '';
-                } else {
-                    statusSelect.value = 'open,ack';
+                const recoveryOption = statusSelect.querySelector('option[value="recovery"]');
+                if (recoveryOption) {
+                    recoveryOption.style.display = 'false';
                 }
+                alertTableBodyEl.innerHTML = '<tr><td colspan="11" class="p-8 text-center text-[var(--muted)]"><i class="fa-solid fa-spinner fa-spin mr-2"></i>Checking alert status...</td></tr>';
+                const resActive = await fetch('/api/alerts?status=open,ack');
+                const dataActive = await resActive.json();
+                const activeAlerts = Array.isArray(dataActive) ? dataActive : (dataActive?.alerts || []);
+                if (activeAlerts.length > 0) {
+                    console.log('พบ Active alerts. กำลังเปิดแท็บ Active.');
+                    statusSelect.value = 'open,ack';
+                    allAlertsCache = activeAlerts;
+                    levelSelect.value = levelFilter;
+                    applyFilters();
+                    return;
+                }
+                if (unseenRecoveryIds.size > 0) {
+                    console.log('ไม่พบ Active alerts แต่พบ Recovery ที่ยังไม่เคยเห็น. กำลังเปิดแท็บ Recovery.');
+                    statusSelect.value = 'recovery';
+                    levelSelect.value = levelFilter;
+                    loadAndCacheAlerts();
+                    return;
+                }
+                console.log('ไม่พบทั้ง Active และ Recovery ที่ยังไม่เคยเห็น. กำลังเปิดแท็บ Closed.');
+                statusSelect.value = 'closed';
                 levelSelect.value = levelFilter;
                 loadAndCacheAlerts();
             }
